@@ -1,0 +1,705 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass docbook
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format pdf
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Calculo Numerico
+\end_layout
+
+\begin_layout Section
+20/08
+\end_layout
+
+\begin_layout Subsection
+Ecuaciones diferenciales.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+x'\left(t\right) & =f\left(t,x\left(t\right)\right)\\
+ & X\left(t_{0}\right)=X_{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Metodo de Euler
+\end_layout
+
+\begin_layout Standard
+Es un taylor a primer orden
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x\left(t+h\right)=x\left(t\right)+hx'\left(t\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x\left(t+h\right)=x\left(t\right)+hf\left(t,x\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Entonces:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x_{0}$
+\end_inset
+
+Dato
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x_{i+1}=x_{i}+hf\left(t_{i}x_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Taylor de orden 2:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x\left(t+h\right)=x\left(t\right)+h.x'\left(t\right)+h^{2}.x''\left(t\right)/2$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x\left(t+h\right)=x\left(t\right)+h.f\left(t,x\right)+h^{2}??$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Pero como 
+\begin_inset Formula $\begin{cases}
+x'\left(t\right)=f\left(t,x\left(t\right)\right)\\
+x''\left(t\right)=f_{t}\left(t,x\left(t\right)\right)+f_{x}\left(t,x\left(t\right)\right)f\left(t,x\left(t\right)\right)
+\end{cases}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x\left(t+h\right)=x\left(t\right)+h.f\left(t,x\right)+h^{2}\left(f_{t}\left(t,x\left(t\right)\right)+f_{x}\left(t,x\left(t\right)\right)f\left(t,x\left(t\right)\right)\right)/2$
+\end_inset
+
+ Metodo de Taylor de orden 2
+\begin_inset Newline newline
+\end_inset
+
+Aplicado a cada coordenada de un vector x.
+\begin_inset Newline newline
+\end_inset
+
+Ejemplo:
+\begin_inset Formula $\begin{cases}
+x\left(t\right)=t*sen\left(x\left(t\right)\right)\\
+x\left(0\right)=1
+\end{cases}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Metodo de Euler
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\begin{cases}
+x_{0}=1\\
+x_{i+1}=x_{i}+h*t_{i}*sen\left(x_{i}\left(t\right)\right)
+\end{cases}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Metodo de Taylor orden 2
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\begin{cases}
+x_{0}=1\\
+x_{i+1}=x_{i}+h*t_{i}*sen\left(x_{i}\right)+\frac{h^{2}}{2}\left[sen\left(x_{i}\right)+t_{i}^{2}*cos\left(x_{i}\right)*sen\left(x_{i}\right)\right]
+\end{cases}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Metodo de Taylor orden k:
+\end_layout
+
+\begin_layout Standard
+Idea: 
+\begin_inset Formula $x\left(t+h\right)=x\left(t\right)+x'\left(t\right)h+...+\frac{h^{k}}{k!}x^{\left(k\right)}\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Octave:
+\end_layout
+
+\begin_layout Standard
+function [x,y]=Euler(x0,xf,f,y0,N)
+\begin_inset Newline newline
+\end_inset
+
+x(i)=x0
+\begin_inset Newline newline
+\end_inset
+
+y(i)=y0
+\begin_inset Newline newline
+\end_inset
+
+h=(tf-t0)/N
+\begin_inset Newline newline
+\end_inset
+
+for i=2:(N+1)
+\end_layout
+
+\begin_layout Standard
+x(i)=x(i-1)+h
+\end_layout
+
+\begin_layout Standard
+y(i)=y(i-1)+hf(x(i-1),y(i-1))
+\begin_inset Newline newline
+\end_inset
+
+end for
+\begin_inset Newline newline
+\end_inset
+
+plot(x,y) #hold on, pega el grafico uno arriba del otro
+\end_layout
+
+\begin_layout Section
+23/08
+\end_layout
+
+\begin_layout Subsection
+Metodos de un paso
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{array}{c}
+x'=f\left(t,x\right)\:t\epsilon\left[t_{0},\tau\right]\\
+x\left(t_{0}\right)=x_{0}
+\end{array}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x_{i+1}=x_{i}+h\phi$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+con 
+\begin_inset Formula $i\epsilon0,1,2,...,n-1$
+\end_inset
+
+ y 
+\begin_inset Formula $h=\frac{\tau-t_{0}}{n}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Idea 
+\begin_inset Formula $x\left(t_{i}\right)parecidox_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Error de truncamiento local
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{i+1}=x_{i}+h\Phi\left(t_{i},x,h\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x\left(t+h\right)=x\left(t\right)+h\Phi\left(t,x\left(t\right),h\right)+h\tau_{t}\left(h\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\tau_{i}=\tau_{ti}\left(h\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Error Global
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|x\left(t_{i}\right)-x_{i}\right|<???$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Teorema: Si 
+\begin_inset Formula $\Phi\left(t,x,h\right)$
+\end_inset
+
+ es Lipshitz con costante K en x, entonces:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|x\left(T\right)-x_{m}\right|\leq\left(\frac{\tau_{max}}{K}\right)\left(e^{K\left(T-t_{0}\right)}-1\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\tau_{max}=max\left\{ \left|\tau_{i}\right|\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Ejemplo
+\end_layout
+
+\begin_layout Standard
+Sea el PVI
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{array}{c}
+x'=sen\left(x\right)+2t\\
+x\left(0\right)=1
+\end{array}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Queremos aproximas 
+\begin_inset Formula $x\left(2\right)$
+\end_inset
+
+con error menor que 
+\begin_inset Formula $10^{-3}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Calcular m para conseguir esto.
+\end_layout
+
+\begin_layout Subsubsection
+Con Euler
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{i+1}=x_{i}+hf\left(t_{i},x_{i}\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Phi\left(t,x,h\right)=f\left(t,x\right)=sen\left(x\right)+2t$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x\left(t+h\right)=x\left(t\right)+h\left[f\left(t,x\right)\right]+h\tau_{t}\left(h\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x\left(t+h\right)=x\left(t\right)+h\left[x'\left(t\right)\right]+\frac{h^{2}}{2}x''\left(\theta_{t,h}\right)$
+\end_inset
+
+ con 
+\begin_inset Formula $\theta_{t,h}\leq\left(t,t+h\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\tau_{t}\left(h\right)=\frac{h}{2}x''\left(\theta_{t,h}\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x''\left(t\right)=\frac{d}{dt}\left(x'\left(t\right)\right)=\frac{d}{dt}\left(f\left(t,x\left(t\right)\right)\right)=\frac{d}{dt}\left(sen\left(x\left(t\right)\right)+2t\right)=x'\left(t\right)cos\left(x\left(t\right)\right)+2=\left(sen\left(x\left(t\right)\right)+2t\right)cos\left(x\left(t\right)\right)+2$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $t_{0}\leq t\leq T\left(0\leq t\leq2\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\left|x''\left(t\right)\right|\leq\left(\left|sen\left(x\left(t\right)\right)\right|+2\left|t\right|\right)\left|cos\left(x\left(t\right)\right)\right|+2=7$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\left|\tau_{i}\right|=\left|\tau_{ti}\left(h\right)\right|=\left|\frac{h}{2}x''\left(\theta_{t_{i}h}\right)\right|$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $t_{0}\leq t_{i}<\theta_{t_{i}h}<t_{i}+h\leq t_{max}h=T\leq\frac{7}{2}h$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\tau_{max}=max\left\{ \left|\tau_{i}\right|\right\} \leq\frac{7}{2}h$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\left|\Phi\left(t,x_{1},h\right)-\Phi\left(t,x_{2},h\right)\right|=\left|\left(sen\left(x_{1}\right)+2t\right)-\left(sen\left(x_{2}\right)+2t\right)\right|=\left|sen\left(x_{1}\right)-sen\left(x_{2}\right)\right|\leq\left|x_{1}-x_{2}\right|$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\left|x\left(2\right)-x_{m}\right|\leq\left(\frac{7}{2}h\right)\left(e^{1\left(2-0\right)}-1\right)=\frac{7}{2}h\left(e^{2}-1\right)\leq28h=28\left(\frac{2-0}{m}\right)=\frac{56}{m}<10^{-3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Con Taylor de orden 2
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Phi\left(t,x,h\right)=f\left(t,x\right)+\frac{h}{2}\left[f_{t}\left(t,x\right)+f_{x}\left(t,x\right)\right]$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x\left(t+h\right)=x\left(t\right)+h\Phi\left(t,x,h\right)+h\tau_{t}\left(h\right)=x\left(t\right)+hf\left(t,x\right)+\frac{h^{2}}{2}\left[f_{t}\left(t,x\right)+f_{x}\left(t,x\right)f\left(t,x\right)\right]+h\tau_{t}\left(h\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x\left(t+h\right)=x\left(t\right)+hx'\left(t\right)+\frac{h^{2}}{2}x''\left(t\right)+\frac{h^{3}}{6}x'''\left(\theta_{t,h}\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\tau_{t}\left(h\right)=\frac{h^{2}}{6}x'''\left(\theta_{t,h}\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x''\left(t\right)=x'\left(t\right)cos\left(x\left(t\right)\right)+2$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $x'''\left(t\right)=x''\left(t\right)cos\left(x\left(t\right)\right)-\left(x'\left(t\right)\right)^{2}sen\left(x\left(t\right)\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $0\leq t\leq2$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\left|x'''\left(t\right)\right|\leq\left|x''\left(t\right)\right|+\left|x'\left(t\right)\right|^{2}\leq7+\left|sen\left(x\right)+2t\right|^{2}\leq5+16=32$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\left|\tau_{t_{i}}\left(h\right)\right|\leq\frac{h^{2}}{6}32\leq6h^{2}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+constante de Lipschitz para 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ en x
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Phi\left(t,x,h\right)=sen\left(x\right)+2t+\frac{h}{2}\left[2+cos\left(x\right)\left(sen\left(x\right)+t\right)\right]$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\left|\Phi\left(t,x_{1},h\right)-\Phi\left(t,x_{2},h\right)\right|=\left|\left(sen\left(x_{1}\right)+2t+\frac{h}{2}\left[2+cos\left(x_{1}\right)\left(sen\left(x_{1}\right)+t\right)\right]\right)-\left(sen\left(x_{2}\right)+2t+\frac{h}{2}\left[2+cos\left(x_{2}\right)\left(sen\left(x_{2}\right)+t\right)\right]\right)\right|$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $=\left|\left(sen\left(x_{1}\right)-sen\left(x_{2}\right)\right)+\frac{h}{2}2t\left(cos\left(x_{1}\right)-cos\left(x_{2}\right)\right)+\frac{h}{2}\left(cos\left(x_{1}\right)sen\left(x_{1}\right)-cos\left(x_{2}\right)sen\left(x_{2}\right)\right)\right|\leq$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\left|x_{1}-x_{2}\right|+ht\left|x_{1}-x_{2}\right|+\frac{h}{4}\left|sen\left(2x_{1}\right)-sen\left(2x_{2}\right)\right|=\left(1+ht+\frac{h}{2}\right)\left|x_{1}-x_{2}\right|\leq\left(1+\frac{5}{2}h\right)\left|x_{1}-x_{2}\right|$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\left|x\left(2\right)-x_{m}\right|=\left(\frac{\tau_{max}}{K}\right)\left(e^{K\left(2-0\right)}-1\right)\leq\frac{gh^{2}}{\frac{7}{2}}\left(e^{\frac{7}{2}2}-1\right)\leq\frac{12}{7}h^{2}e^{7}<10^{-3}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\frac{2}{m}=h<\frac{1}{\sqrt{2}}10^{-2}e^{-4}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Entonces 
+\begin_inset Formula $32000<m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Sistemas de ecuaciones
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{array}{c}
+\overline{x}'=f\left(t,\overline{x}\right),t_{0}\leq t\leq\tau\\
+\overline{x}\left(t_{0}\right)=x_{0}
+\end{array}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\begin{array}{c}
+x'=ax+by\\
+y'=cx+dy\\
+x\left(t_{0}\right)=x_{0}\\
+y\left(t_{0}\right)=y_{0}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

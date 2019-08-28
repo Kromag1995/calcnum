@@ -1,0 +1,287 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+20/08
+\end_layout
+
+\begin_layout Subsection
+Ecuaciones diferenciales ordinarias de orden 1:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{array}{c}
+y'\left(t\right)=f\left(t,y\right)\\
+y\left(t_{0}\right)=y_{0}
+\end{array}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Definicion: Dado un conjunto 
+\begin_inset Formula $D\subseteq R^{2}$
+\end_inset
+
+ decimos que f(t,y) es Lipschitz en la segunda variable y si 
+\begin_inset Formula $\exists$
+\end_inset
+
+ L>0 talque:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|f\left(t,y_{2}\right)-f\left(t,y_{1}\right)\right|\leq L\left|y_{2}-y_{1}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+para todos t,y1; t,y2 
+\begin_inset Formula $\epsilon D$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Teorema (existencia y unicidad):
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $D=\left\{ \left(t,y\right):a\leq t\leq b,\:-\infty<y<+\infty\right\} $
+\end_inset
+
+ y f(t,y) continua en D y Lipschitz en y entonces el sistema diferencial
+ tiene una solucion unica.
+\end_layout
+
+\begin_layout Subsection
+Metodos de un paso
+\end_layout
+
+\begin_layout Subsubsection
+Metodo de Euler
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{array}{c}
+y'\left(t\right)=f\left(t,y\left(t\right)\right)\\
+y\left(t_{0}\right)=y_{0}
+\end{array}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Se basa en la aproximacion :
+\begin_inset Formula $y\left(t+h\right)parecido=y\left(t\right)+hy'\left(t\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+El metodo es: 
+\begin_inset Formula $y_{1}=y\left(t_{0}\right)+hy'\left(t_{0}\right)=y\left(t_{0}\right)+hf\left(t_{0},y_{0}\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+En general:
+\begin_inset Formula $y_{i+1}=y_{i}+hf\left(t_{i},y_{i}\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Obs: para aproximar 
+\begin_inset Formula $y\left(t_{f}\right)$
+\end_inset
+
+ con N pasos, tomo h como 
+\begin_inset Formula $h=\frac{t_{f}-t_{i}}{N}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Forma general de metodos de un paso: 
+\begin_inset Formula $y_{i+1}=y_{i}+h\phi\left(t_{i},y_{i},h\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+En el metodo de Euler: 
+\begin_inset Formula $\phi\left(t_{i},y_{i},h\right)=f\left(t_{i},y_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Metodo de Taylor de orden 2
+\end_layout
+
+\begin_layout Standard
+Uso la aproximacion de orden 2
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $y\left(t+h\right)parecido=y\left(t\right)+hy'\left(t\right)+\frac{h^{2}}{2}y''\left(t\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $y'\left(t\right)=f\left(t,y\left(t\right)\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $y''\left(t\right)=\left(f\left(t,y\left(t\right)\right)\right)'=f_{t}\left(t,y\left(t\right)\right)+f_{y}\left(t,y\left(t\right)\right)y'\left(t\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $y''\left(t\right)=\left(f\left(t,y\left(t\right)\right)\right)'=f_{t}\left(t,y\left(t\right)\right)+f_{y}\left(t,y\left(t\right)\right)f\left(t,y\left(t\right)\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $y\left(t+h\right)parecido=y\left(t\right)+hf\left(t,y\left(t\right)\right)+\frac{h^{2}}{2}\left[f_{t}\left(t,y\left(t\right)\right)+f_{y}\left(t,y\left(t\right)\right)f\left(t,y\left(t\right)\right)\right]$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Formula para el metodo de Taylor de orden 2
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $y_{i+1}\left(t+h\right)parecido=y_{i}\left(t\right)+hf\left(t_{i},y_{i}\left(t\right)\right)+\frac{h^{2}}{2}\left[f_{t}\left(t_{i},y_{i}\left(t\right)\right)+f_{y}\left(t_{i},y_{i}\left(t\right)\right)f\left(t_{i},y_{i}\left(t\right)\right)\right]$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+La formula para ordenes mayores se saca de la serie de Taylor.
+\end_layout
+
+\begin_layout Subsection
+Analisis de errores:
+\end_layout
+
+\begin_layout Subsubsection
+Error de truncamiento local
+\end_layout
+
+\begin_layout Standard
+SI el metodo es 
+\begin_inset Formula $y_{i+1}=y_{i}+h\phi\left(t_{i},y_{i},h\right)$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

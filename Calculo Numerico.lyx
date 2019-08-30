@@ -8,8 +8,8 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language spanish-mexico
-\language_package default
-\inputencoding auto
+\language_package babel
+\inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -1125,6 +1125,518 @@ Orden 4:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+30/08
+\end_layout
+
+\begin_layout Subsection
+Diferencias Finitas
+\end_layout
+
+\begin_layout Paragraph
+Idea
+\end_layout
+
+\begin_layout Standard
+Aproximar: 
+\begin_inset Formula $lim\frac{u\left(x+h\right)-u\left(x\right)}{h}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u:I\subset R\rightarrow R$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u'\left(x\right)=\left[\frac{u\left(x+h\right)-u\left(x\right)}{h}\right]+O\left(h\right),h>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u'\left(x\right)=\left[\frac{u\left(x\right)-u\left(x-h\right)}{h}\right]+O\left(h\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u'\left(x\right)=\left[\frac{u\left(x+h\right)-u\left(x-h\right)}{2h}\right]+O\left(h^{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Uso Practico
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $I=\left[a,b\right],u:I\rightarrow R$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $a=x_{0}<x_{1}<\ldots<x_{m}=b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{i}=a+i\left(\frac{b-a}{m}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $h=\frac{b-a}{M}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{i}-x_{i-1}=h,i=1,\ldots,u$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{i}=u\left(x_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{i+1}=u\left(x_{i+1}\right)=u\left(x_{i}+h\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{i-1}=u\left(x_{i-1}\right)=u\left(x_{i}-h\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u'\left(x_{i}\right)\sim\frac{u_{i+1}-u_{i}}{h},0\leq i\leq m-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u'\left(x_{i}\right)\sim\frac{u_{i}-u_{i-1}}{h},1\leq i\leq m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u'\left(x_{i}\right)\sim\frac{u_{i+1}-u_{i+1}}{2h},1\leq i\leq m-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Problema
+\series medium
+: Hallar una discratizacion de la derivada que requiera solo saltar hacia
+ adelante y que tenga error 
+\begin_inset Formula $O\left(h^{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hagamos cuentas con 
+\begin_inset Formula $u\left(x\right),u\left(x+h\right),u\left(x+2h\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u'\left(x\right)=\left[\frac{u\left(x+h\right)-u\left(x\right)}{h}\right]+O\left(h\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $hu'\left(x\right)=u\left(x+h\right)-u\left(x\right)+O\left(h^{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $hu'\left(x\right)+O\left(h^{2}\right)=1*u\left(x+h\right)+\left(-1\right)*u\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Busco A, B, C 
+\begin_inset Formula $\epsilon R$
+\end_inset
+
+ independientes de x y de h tales que:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Au\left(x\right)+Bu\left(x+h\right)+Cu\left(x+2h\right)=hu'\left(x\right)+O\left(h^{3}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u\left(x+h\right)=u\left(x\right)+hu'\left(x\right)+\frac{1}{2}h^{2}u''\left(x\right)+\frac{1}{6}u^{3}u'''\left(\theta_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u\left(x+2h\right)=u\left(x\right)+2hu'\left(x\right)+2h^{2}u''\left(x\right)+\frac{4}{3}u^{3}u'''\left(\theta_{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Au\left(x\right)+Bu\left(x+h\right)+Cu\left(x+2h\right)=\left(A+B+C\right)u\left(x\right)+\left(B+2C\right)hu'\left(x\right)+\left(\frac{B}{2}+2C\right)h^{2}u''\left(x\right)+\left(\frac{1}{6}Bu'''\left(\theta_{1}\right)+\frac{4}{3}Cu'''\left(\theta_{2}\right)\right)h^{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left\{ \begin{array}{c}
+A+B+C=0\\
+B+2C=1\\
+\frac{B}{2}+2C=0
+\end{array}\right.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces 
+\begin_inset Formula $B=2$
+\end_inset
+
+, 
+\begin_inset Formula $C=-\frac{1}{2}$
+\end_inset
+
+ y 
+\begin_inset Formula $A=-\frac{3}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-\frac{3}{2}u\left(x\right)+2\left(x+h\right)-\frac{1}{2}u\left(x++2h\right)=hu'\left(x\right)+O\left(h^{3}\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $\left|u'''\left(\theta\right)\right|\leq K$
+\end_inset
+
+ para 
+\begin_inset Formula $\theta\epsilon I=\left[a,b\right]$
+\end_inset
+
+ y 
+\begin_inset Formula $x,x+h,x+2h\epsilon I$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{-\frac{3}{2}u\left(x\right)+2\left(x+h\right)-\frac{1}{2}u\left(x++2h\right)}{h}=u'\left(x\right)+O\left(h^{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u'\left(x_{0}\right)\sim\frac{-\frac{3}{2}u\left(x\right)+2\left(x+h\right)-\frac{1}{2}u\left(x++2h\right)}{h}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Derivadas de orden superior
+\end_layout
+
+\begin_layout Paragraph
+Ejemplo
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u''\left(x\right)\sim\frac{u\left(x+2h\right)-2u\left(x\right)+u\left(x-h\right)}{2h^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u\left(x+h\right)=u\left(x\right)+hu'\left(x\right)+\frac{1}{2}h^{2}u''\left(x\right)+O\left(h^{3}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u\left(x-h\right)=u\left(x\right)-hu'\left(x\right)+\frac{1}{2}h^{2}u''\left(x\right)+O\left(h^{3}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u\left(x+h\right)-2u\left(x\right)+u\left(x+h\right)=h^{2}u''\left(x\right)+O\left(h^{3}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u''\left(x\right)=\frac{u\left(x+h\right)-2u\left(x\right)+u\left(x+h\right)}{h^{2}}+O\left(h\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ejercicios
+\end_layout
+
+\begin_layout Standard
+Dar una discretizacion para el problema:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{cases}
+u''+u=0\\
+u\left(0\right)=A & u\left(\frac{\pi}{2}\right)=B
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde A y B son parametros del problema.
+\end_layout
+
+\begin_layout Standard
+Discretizamos 
+\begin_inset Formula $\left[0,\frac{\pi}{2}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{i}=i\left(\frac{\pi}{2M}\right),0\leq i\leq M$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Voy a aproximar 
+\begin_inset Formula $u''\left(x_{i}\right)+u\left(x_{i}\right)=0$
+\end_inset
+
+ en el interior y en los contornos uso las condiciones, A y B.
+\end_layout
+
+\begin_layout Standard
+Llamamos a 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+a la aproximacion
+\end_layout
+
+\begin_layout Standard
+De 
+\begin_inset Formula $u\left(x_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u''\left(x_{i}\right)\sim\frac{u_{i+1}-2u_{i}+u_{i-1}}{h^{2}},1\leq i\leq M-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{cases}
+\frac{u_{i+1}-2u_{i}+u_{i-1}}{h^{2}}+u_{i}=0 & 1\leq i\leq M-1\\
+u_{0}=A,u_{M}=B & Bordes
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{i+1}-2u_{i}+u_{i-1}+h^{2}u_{i}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{i+1}-\left(2-h^{2}\right)u_{i}+u_{i-1}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{i+1}+\alpha\left(h\right)u_{i}+u_{i-1}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{array}{cccccccc}
+1 & 0 & \ldots & \ldots &  &  & \ldots & 0\\
+1 & \alpha\left(h\right) & 1 & \ldots &  &  & \ldots & 0\\
+0 & 1 & \alpha\left(h\right) & 1 &  &  & \ldots & \vdots\\
+\vdots & \vdots & \vdots &  & \ldots & \ldots & \ldots & 0\\
+0 & 0 & \ldots & 0 & \ldots & \ldots & 0 & 1
+\end{array}\right)\left(\begin{array}{c}
+u_{0}\\
+\vdots\\
+\vdots\\
+\vdots\\
+u_{m}
+\end{array}\right)=\left(\begin{array}{c}
+A\\
+\vdots\\
+\vdots\\
+\vdots\\
+B
+\end{array}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Octave
+\end_layout
+
+\begin_layout Standard
+function problema (m)
+\end_layout
+
+\begin_layout Standard
+x=linspace(0,
+\begin_inset Formula $\frac{\pi}{2}$
+\end_inset
+
+,m+1);
+\end_layout
+
+\begin_layout Standard
+h=
+\begin_inset Formula $\pi/\left(2*M\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+b=zeros(m+1,1);
+\end_layout
+
+\begin_layout Standard
+b(1)=A;
+\end_layout
+
+\begin_layout Standard
+b(M+1)=B;
+\end_layout
+
+\begin_layout Standard
+M=zeros(m+1,m+1);
+\end_layout
+
+\begin_layout Standard
+M(1,1)=1;
+\end_layout
+
+\begin_layout Standard
+M(m+1,m+1)=1;
+\end_layout
+
+\begin_layout Standard
+C=-(2-h**2);
+\end_layout
+
+\begin_layout Standard
+for i=2:m
+\end_layout
+
+\begin_layout Standard
+m(i,i-1)=1;
+\end_layout
+
+\begin_layout Standard
+m(i,i)=C;
+\end_layout
+
+\begin_layout Standard
+m(i,i+1)=1;
+\end_layout
+
+\begin_layout Standard
+endfor
+\end_layout
+
+\begin_layout Standard
+endfunction
 \end_layout
 
 \end_body

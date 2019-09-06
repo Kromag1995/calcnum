@@ -6,10 +6,21 @@
 \origin unavailable
 \textclass article
 \use_default_options false
+\begin_modules
+algorithm2e
+fixltx2e
+initials
+multicol
+fixme
+customHeadersFooters
+fix-cm
+bicaption
+subequations
+\end_modules
 \maintain_unincluded_children false
 \language spanish-mexico
-\language_package babel
-\inputencoding utf8
+\language_package auto
+\inputencoding auto
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -24,7 +35,7 @@
 \use_microtype false
 \use_dash_ligatures false
 \graphics default
-\default_output_format pdf
+\default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -63,7 +74,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style french
+\quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -1568,7 +1579,7 @@ Octave
 \end_layout
 
 \begin_layout Standard
-function problema (M)
+function problema (m)
 \end_layout
 
 \begin_layout Standard
@@ -1576,7 +1587,7 @@ x=linspace(0,
 \begin_inset Formula $\frac{\pi}{2}$
 \end_inset
 
-,M+1);
+,m+1);
 \end_layout
 
 \begin_layout Standard
@@ -1588,11 +1599,7 @@ h=
 \end_layout
 
 \begin_layout Standard
-M=zeros(M+1,M+1)
-\end_layout
-
-\begin_layout Standard
-b=zeros(M+1,1)
+b=zeros(m+1,1);
 \end_layout
 
 \begin_layout Standard
@@ -1604,6 +1611,987 @@ b(M+1)=B;
 \end_layout
 
 \begin_layout Standard
+M=zeros(m+1,m+1);
+\end_layout
+
+\begin_layout Standard
+M(1,1)=1;
+\end_layout
+
+\begin_layout Standard
+M(m+1,m+1)=1;
+\end_layout
+
+\begin_layout Standard
+C=-(2-h**2);
+\end_layout
+
+\begin_layout Standard
+for i=2:m;
+\end_layout
+
+\begin_layout Standard
+m(i,i-1)=1;
+\end_layout
+
+\begin_layout Standard
+m(i,i)=C;
+\end_layout
+
+\begin_layout Standard
+m(i,i+1)=1;
+\end_layout
+
+\begin_layout Standard
+endfor
+\end_layout
+
+\begin_layout Standard
+endfunction
+\end_layout
+
+\begin_layout Section
+03/09
+\end_layout
+
+\begin_layout Subsection
+Sistema de n ecuaciones.
+\end_layout
+
+\begin_layout Standard
+¿Cuanto afectará a la solucion un error en el dato b?¿Como medir el error?
+\end_layout
+
+\begin_layout Standard
+Dado 
+\begin_inset Formula $n\epsilon\mathbb{N}$
+\end_inset
+
+, tenemos definidas 
+\begin_inset Formula $\left|\left|.\right|\right|_{1},\left|\left|.\right|\right|_{2}...\left|\left|.\right|\right|_{\infty}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para todo 
+\begin_inset Formula $x\epsilon\mathbb{R}^{n}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{array}{c}
+\left|\left|x\right|\right|_{1}=\mathop{\varSigma\left|x_{i}\right|}\\
+\left|\left|x\right|\right|_{\infty}=max\left|x_{i}\right|\\
+\left|\left|x\right|\right|_{2}=\sqrt{\Sigma x_{i}^{2}}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hay una equivalencia entre las normas!!
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Por ejemplo
+\series default
+ 
+\begin_inset Formula $\left|\left|x\right|\right|_{\infty}\leq\left|\left|x\right|\right|_{1}\leq n\left|\left|x\right|\right|_{\infty}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+qvq 
+\begin_inset Formula $\left|\left|x\right|\right|_{1}\leq n\left|\left|x\right|\right|_{\infty}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|x\right|\right|_{1}=\left|x_{1}\right|+...\left|x_{n}\right|\leq max\left|x_{i}\right|+max\left|x_{i}\right|+...+max\left|x_{i}\right|=\left|\left|x\right|\right|_{\infty}+....+\left|\left|x\right|\right|_{\infty}=n\left|\left|x\right|\right|_{\infty}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+qvq 
+\begin_inset Formula $\left|\left|x\right|\right|_{\infty}\leq\left|\left|x\right|\right|_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|x\right|\right|_{\infty}=max\left|x_{i}\right|\leq\left|x_{1}\right|+\left|x_{2}\right|+...+\left|x_{n}\right|=\left|\left|x\right|\right|_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Otro ejemplo
+\series default
+ 
+\begin_inset Formula $\left|\left|x\right|\right|_{2}\leq\left|\left|x\right|\right|_{1}\leq\sqrt{n}\left|\left|x\right|\right|_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+qvq 
+\begin_inset Formula $\left|\left|x\right|\right|_{2}^{2}\leq\left|\left|x\right|\right|_{1}^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|x\right|\right|_{2}^{2}=x_{1}^{2}+...+x_{n}^{2}=\left|x_{1}\right|^{2}+...+\left|x_{n}\right|^{2}\leq\left(\left|x_{1}\right|+...+\left|x_{n}\right|\right)^{2}=\left|\left|x\right|\right|_{1}^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+qvq 
+\begin_inset Formula $\left|\left|x\right|\right|_{1}\leq\sqrt{n}\left|\left|x\right|\right|_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|x\right|\right|_{1}^{2}\leq n\left|\left|x\right|\right|_{2}^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|x\right|\right|_{1}^{2}=\left(\left|x_{1}\right|+...+\left|x_{n}\right|\right)^{2}\leq n\left(x_{1}^{2}+...+x_{n}^{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Desilgualdad de C-S:
+\end_layout
+
+\begin_layout Standard
+Para todo 
+\begin_inset Formula $a,b\in\mathbb{R}^{n}$
+\end_inset
+
+se tiene que:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\overline{a}\overline{b}\right)^{2}\leq\left(\overline{a}\overline{a}\right).\left(\overline{b}\overline{b}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\left(\left|x_{1}\right|,...,\left|x_{n}\right|\right).\left(1,...,1\right)\right)^{2}\leq$
+\end_inset
+
+
+\begin_inset Formula $\left(\left(\left|x_{1}\right|,...,\left|x_{n}\right|\right).\left(\left|x_{1}\right|,...,\left|x_{n}\right|\right)\right)\left(\left(1,...,1\right).\left(1,...,1\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\left|x_{1}\right|+...+\left|x_{n}\right|\right)^{2}\leq\left(x_{1}^{2}+...+x_{n}^{2}\right)n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+ Queremos resolver el siguiente sistema 
+\begin_inset Formula $Ax=b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{array}{cc}
+4.1 & 2.8\\
+9.7 & 6.6
+\end{array}\right)\left(\begin{array}{c}
+x_{1}\\
+x_{2}
+\end{array}\right)=\left(\begin{array}{c}
+4.1\\
+9.7
+\end{array}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Modificamos 'b' 
+\begin_inset Formula $\vec{A}\vec{x}=\vec{b}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{array}{cc}
+4.1 & 2.8\\
+9.7 & 6.6
+\end{array}\right)\left(\begin{array}{c}
+x_{1}\\
+x_{2}
+\end{array}\right)=\left(\begin{array}{c}
+4.11\\
+9.7
+\end{array}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|\Delta b\right|\right|_{1}=\left|\left|b-\vec{b}\right|\right|_{1}=\left|\left|\left(\begin{array}{c}
+-0.01\\
+0
+\end{array}\right)\right|\right|_{1}=\left|-0.01\right|+\left|0\right|=0.01$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|\Delta x\right|\right|_{1}=\left|\left|x-\vec{x}\right|\right|_{1}=\left|\left|\left(\begin{array}{c}
+0.66\\
+-0.97
+\end{array}\right)\right|\right|_{1}=\left|0.66\right|+\left|0.97\right|=1.63$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+El error relativo se amplifica mucho
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\left|\left|x-\vec{x}\right|\right|_{1}}{\left|\left|x\right|\right|_{1}}=\frac{1.63}{1}=1.63$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\left|\left|b-\vec{b}\right|\right|_{1}}{\left|\left|b\right|\right|_{1}}=\frac{0.01}{13.8}=0.724*10^{-3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Por que este comportamiento?
+\end_layout
+
+\begin_layout Standard
+Dado A ¿Cual sera el factor de amplificacion del error relativo? ¿Tiene
+ cota?
+\end_layout
+
+\begin_layout Standard
+Para una matriz arbitraria 
+\begin_inset Formula $A\in\mathbb{R}^{nxn}$
+\end_inset
+
+y una norma de vectores 
+\begin_inset Formula $\left|\left|\right|\right|$
+\end_inset
+
+cualquiera, definimos la norma matricial asociada como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|A\right|\right|=max\frac{\left|\left|Ax\right|\right|}{\left|\left|x\right|\right|}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|A\right|\right|=max\left|\left|Ax\right|\right|$
+\end_inset
+
+ tomando x con 
+\begin_inset Formula $\left|\left|x\right|\right|=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|A\right|\right|_{1}=\max_{j}\sum_{i=1}^{n}\left|a_{ij}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|A\right|\right|_{\infty}=\max_{i}\sum_{j=i}^{n}\left|a_{ij}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora lo vamos a demostrar
+\end_layout
+
+\begin_layout Standard
+qvq 
+\begin_inset Formula $\left|\left|A\right|\right|_{\infty}=\max_{i}\sum_{j=1}^{n}\left|a_{ij}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|Ax\right|\right|_{\infty}=\left|\left|\begin{array}{c}
+a_{11}x+...+a_{1m}x_{m}\\
+a_{m1}x_{1}+...+a_{mm}x_{m}
+\end{array}\right|\right|_{\infty}=max\left\{ \left|a_{11}x+...+a_{1m}x_{m}\right|,...,\left|a_{m1}x_{1}+...+a_{mm}x_{m}\right|\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $max_{i}\left|\sum_{j=1}^{m}a_{ij}x_{j}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $max_{i}\sum_{j=1}^{m}\left|a_{ij}\right|\left|x_{j}\right|\leq max_{i}\sum_{j=1}^{m}\left|a_{ij}\right|\left|\left|x\right|\right|_{\infty}=\left|\left|x\right|\right|_{\infty}max_{i}\sum_{j=1}^{m}\left|a_{ij}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|Ax\right|\right|_{\infty}\leq\left|\left|x\right|\right|_{\infty}max_{i}\sum_{j=1}^{m}\left|a_{ij}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\left|\left|Ax\right|\right|_{\infty}}{\left|\left|x\right|\right|_{\infty}}\leq max_{i}\sum_{j=1}^{m}\left|a_{ij}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|A\right|\right|_{\infty}\leq max_{i}\sum_{j=1}^{m}\left|a_{ij}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Queda demostrado.
+ Ahora vamos para la otra desigualdad
+\end_layout
+
+\begin_layout Standard
+qvq 
+\begin_inset Formula $\left|\left|A\right|\right|_{\infty}\geq max_{i}\sum_{j=1}^{m}\left|a_{ij}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $k$
+\end_inset
+
+ tal que 
+\begin_inset Formula $\sum_{j=1}^{m}\left|a_{kj}\right|$
+\end_inset
+
+ es maximo y tomemos: 
+\begin_inset Formula $x=\left(\begin{array}{c}
+sg\left(a_{k1}\right)\\
+...\\
+sg\left(a_{km}\right)
+\end{array}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(Ax\right)_{k}=\left(\begin{array}{ccc}
+a_{11} & ... & a_{1m}\\
+... & ... & ...\\
+a_{k1} & ... & a_{km}\\
+... & ... & ...\\
+a_{mm} & ... & a_{mm}
+\end{array}\right)\left(\begin{array}{c}
+sg\left(a_{11}\right)\\
+...\\
+sg\left(a_{k1}\right)\\
+...\\
+sg\left(a_{mm}\right)
+\end{array}\right)=\sum_{j=1}^{m}\left|a_{kj}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|Ax\right|\right|_{\infty}\geq\sum_{j=1}^{m}\left|a_{kj}\right|$
+\end_inset
+
+ y como 
+\begin_inset Formula $\left|\left|x\right|\right|_{\infty}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\left|\left|Ax\right|\right|_{\infty}}{\left|\left|x\right|\right|_{\infty}}\geq\sum_{j=1}^{m}\left|a_{kj}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|A\right|\right|_{\infty}\geq\frac{\left|\left|Ax\right|\right|_{\infty}}{\left|\left|x\right|\right|_{\infty}}\geq max_{i}\sum_{j=1}^{m}\left|a_{ij}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+06/09
+\end_layout
+
+\begin_layout Subsection
+Normas de Matrices
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A\in\mathbb{R}^{nxn}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|A\right|\right|_{\infty}=max_{1\leq i\leq n}\left(\sum_{j}\left|a_{ij}\right|\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|A\right|\right|_{1}=max_{1\leq i\leq n}\left(\sum_{i}\left|a_{ij}\right|\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Obs
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|A\right|\right|_{2}=\sqrt{\rho\left(A^{T}A\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rho$
+\end_inset
+
+: Radio espectral, 
+\begin_inset Formula $\rho\left(M\right)=$
+\end_inset
+
+max
+\begin_inset Formula $\begin{cases}
+\left|\lambda\right| & \lambda\end{cases}$
+\end_inset
+
+ auovalor de M
+\end_layout
+
+\begin_layout Subsection
+Numero de condicion
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|.\right|\right|$
+\end_inset
+
+ norma de vectores.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Cond_{\left|\left|.\right|\right|}\left(A\right)=\left|\left|A\right|\right|\left|\left|A^{-1}\right|\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1) 
+\begin_inset Formula $Cond_{\left|\left|.\right|\right|}\left(A\right)\geq1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+2)
+\begin_inset Formula $Cond_{\left|\left|.\right|\right|}\left(A\right)=Cond_{\left|\left|.\right|\right|}\left(A^{-1}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Obs: 
+\series default
+
+\begin_inset Formula $\left|\left|AB\right|\right|\leq\left|\left|A\right|\right|\left|\left|B\right|\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Notacion
+\series default
+: 
+\begin_inset Formula $Cond_{\rho}\left(A\right)=Cond_{\left|\left|.\right|\right|_{\rho}}\left(A\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|x\right|\right|_{\rho}=\left(\left|x_{1}\right|^{\rho}+...+\left|x_{m}\right|^{\rho}\right)^{\frac{1}{\rho}}$
+\end_inset
+
+ con 
+\begin_inset Formula $\rho\geq1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|x\right|\right|_{\infty}=max_{1\leq i\leq n}\left|\left(x_{i}\right)\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sabemos que
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\left|\left|A\right|\right|_{\infty}}{\sqrt{m}}\leq\left|\left|A\right|\right|_{2}\leq\sqrt{m}\left|\left|A\right|\right|_{\infty}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\left|\left|A\right|\right|_{1}}{\sqrt{m}}\leq\left|\left|A\right|\right|_{2}\leq\sqrt{m}\left|\left|A\right|\right|_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\left|\left|A\right|\right|_{\infty}}{\sqrt{m}}\leq\left|\left|A\right|\right|_{1}\leq\sqrt{m}\left|\left|A\right|\right|_{\infty}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Comparacion de numeros de condicion
+\end_layout
+
+\begin_layout Standard
+Usar comparacion de normas
+\end_layout
+
+\begin_layout Standard
+Ejemplo 2-
+\begin_inset Formula $\infty$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Cond_{2}\left(A\right)=\left|\left|A\right|\right|_{2}\left|\left|A^{-1}\right|\right|_{2}\leq\left(\sqrt{m}\left|\left|A\right|\right|_{\infty}\right)\left(\sqrt{m}\left|\left|A^{-1}\right|\right|_{\infty}\right)=m\left|\left|A\right|\right|_{\infty}\left|\left|A^{-1}\right|\right|_{\infty}=mcond_{\infty}\left(A\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Cond_{2}\left(A\right)\geq\left(\frac{\left|\left|A\right|\right|_{\infty}}{\sqrt{m}}\right)\left(\frac{\left|\left|A\right|\right|_{\infty}}{\sqrt{m}}\right)=\frac{1}{m}Cond_{\infty}\left(A\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Teorema: 
+\series default
+Si 
+\begin_inset Formula $A\in\mathbb{R}^{nxn}$
+\end_inset
+
+y es inversible, entonces:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{1}{cond_{\left|\left|\right|\right|}\left(A\right)}=inf\left\{ \frac{\left|\left|A-B\right|\right|}{\left|\left|A\right|\right|},B\;singular\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aplicacion: A es mlaa proparando errores , tomando matrices B adecuadas
+ ve que: 
+\begin_inset Formula $\frac{1}{cond\left(A\right)}\leq\left[Algo\ chiquito\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A\left(\epsilon\right)=\left(\begin{array}{ccc}
+1 & \epsilon & 2\epsilon\\
+4 & 4 & 4\\
+1 & 0 & 0
+\end{array}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1)Ver que 
+\begin_inset Formula $A\left(\epsilon\right)$
+\end_inset
+
+ es no singular para 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+2)Estimar 
+\begin_inset Formula $cond_{\infty}\left(A\left(\epsilon\right)\right)$
+\end_inset
+
+para 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ tendiendo a 0
+\end_layout
+
+\begin_layout Standard
+1)
+\begin_inset Formula $det\left(A\left(\epsilon\right)\right)=1\left(-1\right)^{3+1}\left|\begin{array}{cc}
+\epsilon & 2\epsilon\\
+4 & 4
+\end{array}\right|=-4\epsilon\neq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+2)
+\begin_inset Formula $\frac{1}{cond_{\infty}\left(A\left(\epsilon\right)\right)}=inf\left\{ \frac{\left|\left|A\left(\epsilon\right)-B\right|\right|_{\infty}}{\left|\left|A\left(\epsilon\right)\right|\right|_{\infty}}\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|A\left(\epsilon\right)-B\right|\right|_{\infty}=\left|\left|\begin{array}{ccc}
+0 & \epsilon & 2\epsilon\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{array}\right|\right|_{\infty}=max_{1\leq i\leq3}\left(\sum_{j=1}^{3}\left|\left(A\left(\epsilon\right)-B\right)_{ij}\right|\right)=3\epsilon$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|A\left(\epsilon\right)\right|\right|_{\infty}=\left|\left|\begin{array}{ccc}
+1 & \epsilon & 2\epsilon\\
+4 & 4 & 4\\
+1 & 0 & 0
+\end{array}\right|\right|_{\infty}=12$
+\end_inset
+
+ si 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ es chiquito.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{1}{cond_{\infty\left(A\left(\epsilon\right)\right)}}=inf\left\{ \right\} \leq\frac{\left|\left|A\left(\epsilon\right)-B\right|\right|_{\infty}}{\left|\left|A\left(\epsilon\right)\right|\right|_{\infty}}=\frac{\epsilon}{4}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{4}{\epsilon}<cond_{\infty}\left(A\left(\epsilon\right)\right),$
+\end_inset
+
+para todo 
+\begin_inset Formula $\epsilon<1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces 
+\begin_inset Formula $cond_{\infty}\left(A\left(\epsilon\right)\right)$
+\end_inset
+
+ tiende a 
+\begin_inset Formula $\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejercicio 2: 
+\series default
+Sea 
+\begin_inset Formula $A\epsilon\mathbb{R}^{2nx2n}$
+\end_inset
+
+dada por :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{array}{cccc}
+\left(\begin{array}{cc}
+\frac{1}{n} & 1\\
+0 & 1
+\end{array}\right) & 0 & 0 & 0\\
+0 & \left(\begin{array}{cc}
+\frac{2}{n} & 2\\
+0 & 2
+\end{array}\right) & 0 & 0\\
+0 & 0 & \left(\begin{array}{cc}
+\frac{3}{m} & n\\
+0 & n
+\end{array}\right) & 0\\
+0 & 0 & 0 & \left(\begin{array}{cc}
+\frac{1}{n} & n\\
+0 & n
+\end{array}\right)
+\end{array}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1) Ver que A no es singular
+\end_layout
+
+\begin_layout Standard
+2) Ver que 
+\begin_inset Formula $cond_{\infty}\left(A\right)\geq n^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+3) Ver que 
+\begin_inset Formula $cond_{2}\left(A\right)$
+\end_inset
+
+ tiende a 
+\begin_inset Formula $\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1)
+\begin_inset Formula $det\left(A\right)=\left(\Pi_{i=1}^{n}\frac{i}{n}\right)\left(\Pi_{i=1}^{n}i\right)=\frac{\left(n!\right)^{2}}{n^{n}}\neq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si una matriz es traingular 
+\begin_inset Formula $det\left(A\right)=\Pi_{i}\theta_{ij}$
+\end_inset
+
+, entonces A no es singular
+\end_layout
+
+\begin_layout Standard
+2) Tomo B singular parecida a A
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $B=\left(\begin{array}{ccccc}
+\left(\begin{array}{cc}
+\frac{1}{n} & 1\\
+0 & 1
+\end{array}\right) & 0 & 0 & 0 & 0\\
+0 & \ddots & 0 & 0 & 0\\
+0 & 0 & \left(\begin{array}{cc}
+0 & i\\
+0 & i
+\end{array}\right) & 0 & 0\\
+0 & 0 & 0 & \ddots & 0\\
+0 & 0 & 0 & 0 & \left(\begin{array}{cc}
+\frac{1}{n} & n\\
+0 & n
+\end{array}\right)
+\end{array}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+B es igual a A menos en la posicion i-esima.
+ 
+\begin_inset Formula $B_{i}$
+\end_inset
+
+ es singular porque las filas 2i-1, 2i son iguales.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|A\left(\epsilon\right)-B\right|\right|_{\infty}=\left|\left|\begin{array}{ccccc}
+0 & 0 & 0 & 0 & 0\\
+0 & \ddots & 0 & 0 & 0\\
+0 & 0 & \left(\begin{array}{cc}
+\frac{i}{n} & 0\\
+0 & 0
+\end{array}\right) & 0 & 0\\
+0 & 0 & 0 & \ddots & 0\\
+0 & 0 & 0 & 0 & 0
+\end{array}\right|\right|_{\infty}=\frac{i}{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|A\right|\right|_{\infty}=\frac{n}{n}+n=n+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{1}{cond_{\infty1}\left(A\right)}=inf\left\{ \right\} \leq\frac{\left|\left|A\left(\epsilon\right)-B\right|\right|_{\infty}}{\left|\left|A\left(\epsilon\right)\right|\right|_{\infty}}=\frac{i}{n\left(n+1\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $cond_{\infty1}\left(A\right)\geq\frac{n^{2}+n}{i}$
+\end_inset
+
+, puedo tomar 
+\begin_inset Formula $i=1$
+\end_inset
+
+,
+\begin_inset Formula $cond_{\infty1}\left(A\right)\geq n^{2}+n\geq n^{2}$
+\end_inset
+
 
 \end_layout
 

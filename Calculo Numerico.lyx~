@@ -2589,7 +2589,1085 @@ B es igual a A menos en la posicion i-esima.
 \end_inset
 
 ,
-\begin_inset Formula $cond_{\infty1}\left(A\right)\geq n^{2}+n\geq n^{2}$
+\begin_inset Formula $cond_{\infty}\left(A\right)\geq n^{2}+n\geq n^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+3) Antes mostramos que 
+\begin_inset Formula $cond_{2}\left(A\right)\geq\frac{1}{m}cond_{\infty}\left(A\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $A\epsilon\mathbb{R}^{mxm}$
+\end_inset
+
+.
+ Tomando m=2n y usando 2).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $cond_{2}\left(A\right)\geq\frac{1}{2n}cond_{\infty}\left(A\right)\geq\frac{1}{2n}n^{2}=\frac{n}{2}$
+\end_inset
+
+tiende a 
+\begin_inset Formula $\infty$
+\end_inset
+
+ cuando n tiende a 
+\begin_inset Formula $\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+10/09
+\end_layout
+
+\begin_layout Subsection
+Eliminacion Gaussiana
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A\epsilon\Re^{nxn},\,b\epsilon\Re^{nxn}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Ax=b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(A|b\right)\rightarrow\left(\vec{A}|\vec{b}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ejemplo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A=\left(\begin{array}{ccc}
+1 & 1 & 1\\
+2 & 0 & -1\\
+3 & 1 & 2
+\end{array}\right)\,B=\left(\begin{array}{c}
+1\\
+0\\
+-1
+\end{array}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{array}{ccc}
+1 & 1 & 1\\
+2 & 0 & -1\\
+3 & 1 & 2
+\end{array}\begin{array}{c}
+|\\
+|\\
+|
+\end{array}\begin{array}{c}
+1\\
+0\\
+-1
+\end{array}\right)\rightarrow\left(\begin{array}{ccc}
+1 & 1 & 1\\
+0 & -2 & -3\\
+0 & -2 & -1
+\end{array}\begin{array}{c}
+|\\
+|\\
+|
+\end{array}\begin{array}{c}
+1\\
+-2\\
+-4
+\end{array}\right)\rightarrow\left(\begin{array}{ccc}
+1 & 1 & 1\\
+0 & 1 & 3/2\\
+0 & 0 & 2
+\end{array}\begin{array}{c}
+|\\
+|\\
+|
+\end{array}\begin{array}{c}
+1\\
+1\\
+-2
+\end{array}\right)\rightarrow\left(\begin{array}{ccc}
+1 & 1 & 1\\
+0 & 1 & 3/2\\
+0 & 0 & 1
+\end{array}\begin{array}{c}
+|\\
+|\\
+|
+\end{array}\begin{array}{c}
+1\\
+1\\
+-1
+\end{array}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Notacion:
+\end_layout
+
+\begin_layout Standard
+Cuando hacemos eliminacion Gaussiana transformamos 
+\begin_inset Formula $A\epsilon\Re^{nxn}$
+\end_inset
+
+ haciendo operaciones de fila y en el paso k-enesimo tenemos
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{array}{cc}
+\begin{array}{ccc}
+1 & * & *\\
+\vdots & \ddots & *\\
+0 & \cdots & 1
+\end{array} & \begin{array}{ccc}
+* & \cdots & *\\
+\vdots & \ddots & \vdots\\
+* & \cdots & *
+\end{array}\\
+\begin{array}{ccc}
+0 & \cdots & 0\\
+\vdots & \ddots & \vdots\\
+0 & \cdots & 0
+\end{array} & \begin{array}{ccc}
+m_{kk} & \cdots & m_{kn}\\
+\vdots & \ddots & \vdots\\
+m_{nk} & \cdots & m_{nn}
+\end{array}
+\end{array}\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Eliminacion gausiana sin pivoteo, el 
+\begin_inset Formula $m_{kk}\neq0$
+\end_inset
+
+ y entonces no necesito permutar filas, necesitamos pivoteo si 
+\begin_inset Formula $m_{kk}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Objetivo del pivoteo
+\end_layout
+
+\begin_layout Standard
+Poner algo no nulo en el lugar kk, entonces intercambio filas 
+\begin_inset Formula $f_{k}\rightleftarrows f_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+para poder elegir la fila necesito 
+\begin_inset Formula $m_{ik}\neq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Posibles estrategias:
+\end_layout
+
+\begin_layout Itemize
+Tomar el primer 
+\begin_inset Formula $m_{ik}\neq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Tomar el 
+\begin_inset Formula $m_{ik}$
+\end_inset
+
+de modulo maximo
+\end_layout
+
+\begin_layout Itemize
+Tomar el 
+\begin_inset Formula $m_{ik}$
+\end_inset
+
+tal que 
+\begin_inset Formula $max_{k\leq j\leq\upsilon}\frac{m_{ij}}{m_{ik}}$
+\end_inset
+
+ es minimo
+\end_layout
+
+\begin_layout Subsubsection
+Cuentas para eliminacion:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A=\left(\begin{array}{ccc}
+a_{11} & \dotsb & a_{1n}\\
+\vdots & 0 & \vdots\\
+a_{n1} & \dotsb & a_{nn}
+\end{array}\right)\rightarrow\left(\begin{array}{cc}
+\begin{array}{ccc}
+1 & * & *\\
+\vdots & \ddots & *\\
+0 & \cdots & 1
+\end{array} & \begin{array}{ccc}
+* & \cdots & *\\
+\vdots & \ddots & \vdots\\
+* & \cdots & *
+\end{array}\\
+\begin{array}{ccc}
+0 & \cdots & 0\\
+\vdots & \ddots & \vdots\\
+0 & \cdots & 0
+\end{array} & \begin{array}{ccc}
+a_{kk} & \cdots & a_{kn}\\
+\vdots & \ddots & \vdots\\
+a_{nk} & \cdots & a_{nn}
+\end{array}
+\end{array}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hago 
+\begin_inset Formula $f_{j}\leftarrow f_{j}+\left(-\frac{a_{jk}}{a_{kk}}\right)f_{k}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{array}{cc}
+\begin{array}{ccc}
+1 & * & *\\
+\vdots & \ddots & *\\
+0 & \cdots & 1
+\end{array} & \begin{array}{ccc}
+* & \cdots & *\\
+\vdots & \ddots & \vdots\\
+* & \cdots & *
+\end{array}\\
+\begin{array}{ccc}
+0 & \cdots & 0\\
+\vdots & \ddots & \vdots\\
+0 & \cdots & 0
+\end{array} & \begin{array}{cccc}
+1 & \frac{a_{kk+1}}{a_{kk}} & \cdots & \frac{a_{kn}}{a_{kk}}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{nk} & \dotsb & \cdots & a_{nn}
+\end{array}
+\end{array}\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{A}=\left(\begin{array}{cc}
+\begin{array}{ccc}
+1 & a_{12} & *\\
+\vdots & \ddots & a_{23}\\
+0 & \cdots & 1
+\end{array} & \begin{array}{ccc}
+* & \cdots & *\\
+\vdots & \ddots & \vdots\\
+* & \cdots & *
+\end{array}\\
+\begin{array}{ccc}
+0 & \cdots & 0\\
+\vdots & \ddots & \vdots\\
+0 & \cdots & 0
+\end{array} & \begin{array}{ccc}
+1 & \frac{a_{kk+1}}{a_{kk}} & \frac{a_{kn}}{a_{kk}}\\
+\vdots & \ddots & \vdots\\
+0 & \dotsb & 1
+\end{array}
+\end{array}\right),\,\vec{b}=\left(\begin{array}{c}
+b_{1}\\
+\vdots\\
+b_{n}
+\end{array}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Ax=b\rightarrow\left(A|b\right)\rightsquigarrow\left(\vec{A}|\vec{b}\right)\rightsquigarrow\vec{A}x=\vec{b}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n}=b_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $1x_{n-1}+a_{n-1n}x_{n}=b_{n-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n-1}=b_{n-1}-a_{n-1n}x_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{i}=b_{i}-\sum_{l=i+1}^{n}a_{il}x_{l}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Estructura de la funcion que resuelve la ecuacion con eliminacion gaussiana
+ sin pivoteo
+\end_layout
+
+\begin_layout Standard
+[Argumentos recibidos: A, b]
+\end_layout
+
+\begin_layout Enumerate
+Chequear los tamaños
+\end_layout
+
+\begin_layout Enumerate
+Triangular la matriz 
+\end_layout
+
+\begin_layout Enumerate
+Chequear que 
+\begin_inset Formula $a_{kk}\neq0$
+\end_inset
+
+ cada paso
+\end_layout
+
+\begin_layout Enumerate
+Calcular x
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Codigo Octave
+\end_layout
+
+\begin_layout Standard
+function x = EliminacionSinPivoteo(A,b)
+\end_layout
+
+\begin_layout Standard
+x = zeros(n,1);
+\end_layout
+
+\begin_layout Standard
+[n,m] = size(A);
+\end_layout
+
+\begin_layout Standard
+for k=1:n
+\end_layout
+
+\begin_layout Standard
+| if A(k,k) == 0
+\end_layout
+
+\begin_layout Standard
+| | disp('No se puede triangular')
+\end_layout
+
+\begin_layout Standard
+| | return
+\end_layout
+
+\begin_layout Standard
+| endif
+\end_layout
+
+\begin_layout Standard
+| pivote = A(k,k);
+\end_layout
+
+\begin_layout Standard
+| A(k, k+1:n) = A(k,k+1:n)/pivote;
+\end_layout
+
+\begin_layout Standard
+| b(k) = b(k)/pivote;
+\end_layout
+
+\begin_layout Standard
+| for i=k+1:n
+\end_layout
+
+\begin_layout Standard
+| | A(i, k+1:n) = A(i,k+1:n)-A(i,k+1)*A(k,k+1:n);
+\end_layout
+
+\begin_layout Standard
+| endfor
+\end_layout
+
+\begin_layout Standard
+endfor
+\end_layout
+
+\begin_layout Standard
+for i = n:-1:1
+\end_layout
+
+\begin_layout Standard
+| x(i)=b(i)-A(i,i+1:n)*x(i+1:n);
+\end_layout
+
+\begin_layout Standard
+endfor
+\end_layout
+
+\begin_layout Standard
+endfunction
+\end_layout
+
+\begin_layout Subsubsection
+Test de eliminacion
+\end_layout
+
+\begin_layout Standard
+Test_eleminicion.m
+\end_layout
+
+\begin_layout Standard
+N=2000;
+\end_layout
+
+\begin_layout Standard
+n = 20;
+\end_layout
+
+\begin_layout Standard
+for k=1:N
+\end_layout
+
+\begin_layout Standard
+| A = rand(n,n);
+\end_layout
+
+\begin_layout Standard
+| x = rand(n,1);
+\end_layout
+
+\begin_layout Standard
+| b = A.x;
+\end_layout
+
+\begin_layout Standard
+| x_ap = eliminacionSinPivoteo(A,b);
+\end_layout
+
+\begin_layout Standard
+| err(k) = norm(x-x_ap, inf);
+\end_layout
+
+\begin_layout Standard
+endfor
+\end_layout
+
+\begin_layout Standard
+similog(1:N,err);
+\end_layout
+
+\begin_layout Section
+13/09
+\end_layout
+
+\begin_layout Subsection
+Resolucion de sistemas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Ax=b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Metodos directos: resolver sistema pasando a un problema mas simples
+\end_layout
+
+\begin_layout Itemize
+Metodos iterativos: construir una sucecion 
+\begin_inset Formula $x^{\left(0\right)},\,x^{\left(1\right)}...x^{\left(k\right)}\rightarrow x_{sol}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Triangulacion de Gauss.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Teorema:
+\series default
+ si no hace falta intercambiar filas en la eliminacion de Gauss 
+\begin_inset Formula $A=LU$
+\end_inset
+
+, con L triangular inferior y con U triangular superior.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A=\left(\begin{matrix}a_{11} & \dotsb & a_{1m}\\
+\vdots & \ddots & \vdots\\
+a_{n1} & \dotsb & a_{nm}
+\end{matrix}\right)$
+\end_inset
+
+,
+\begin_inset Formula $L_{1}=\left(\begin{matrix}1_{11} & \dotsb\\
+\vdots & \ddots & \vdots\\
+m_{n1} & \dotsb & 1
+\end{matrix}\right)$
+\end_inset
+
+con 
+\begin_inset Formula $m_{j1}=\frac{-a_{j1}}{a_{11}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ejemplo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A=\left(\begin{matrix}1 & 2 & 3\\
+4 & 5 & 6\\
+7 & 8 & 10
+\end{matrix}\right)\:L_{1}\left(\begin{matrix}1 & 0 & 0\\
+-4 & 1 & 0\\
+-7 & 0 & -1
+\end{matrix}\right)$
+\end_inset
+
+, entonces 
+\begin_inset Formula $L_{1}A=\left(\begin{matrix}1 & 2 & 3\\
+0 & -3 & -6\\
+0 & -6 & -11
+\end{matrix}\right)\:L_{2}L_{1}A=\left(\begin{matrix}1 & 0 & 0\\
+0 & 1 & 0\\
+0 & -2 & 1
+\end{matrix}\right)\left(\begin{matrix}1 & 2 & 3\\
+0 & -3 & -6\\
+0 & -6 & -11
+\end{matrix}\right)=\left(\begin{matrix}1 & 2 & 3\\
+0 & -3 & -6\\
+0 & 0 & 1
+\end{matrix}\right)=U$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A=L_{1}^{-1}L_{2}^{-1}U=LU$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si hace falta intercambiar filas, se tiene 
+\begin_inset Formula $A\epsilon\Re^{nxn}$
+\end_inset
+
+inversible, 
+\begin_inset Formula $\exists P$
+\end_inset
+
+ matriz de permutacion, 
+\begin_inset Formula $\exists L$
+\end_inset
+
+ triangular inferior, 
+\begin_inset Formula $\exists V$
+\end_inset
+
+ triangular superiror, talque 
+\begin_inset Formula $PA=LU$
+\end_inset
+
+.
+ P se obtiene intercambiando filas, o columnas, en la matriz identidad.
+ 
+\begin_inset Formula $P=P_{ij}$
+\end_inset
+
+ permuta filas i y j de la identidad (
+\begin_inset Formula $P.P=I$
+\end_inset
+
+, 
+\begin_inset Formula $\det P_{ij}=-1$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo: 
+\begin_inset Formula $A=\left(\begin{matrix}0 & 1 & 2 & 1\\
+1 & 2 & 1 & 3\\
+1 & 1 & -1 & 1\\
+0 & 1 & 8 & 12
+\end{matrix}\right)\:P_{1,2}=\left(\begin{matrix}0 & 1 & 0 & 0\\
+1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{1,2}.A=\left(\begin{matrix}0 & 1 & 0 & 0\\
+1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{matrix}\right).\left(\begin{matrix}0 & 1 & 2 & 1\\
+1 & 2 & 1 & 3\\
+1 & 1 & -1 & 1\\
+0 & 1 & 8 & 12
+\end{matrix}\right)=\left(\begin{matrix}1 & 2 & 1 & 3\\
+0 & 1 & 2 & 1\\
+1 & 1 & -1 & 1\\
+0 & 1 & 8 & 12
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $L_{1}=\left(\begin{matrix}1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+-1 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{matrix}\right)\:L_{1}P_{1,2}A=\left(\begin{matrix}1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+-1 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{matrix}\right).\left(\begin{matrix}1 & 2 & 1 & 3\\
+0 & 1 & 2 & 1\\
+1 & 1 & -1 & 1\\
+0 & 1 & 8 & 12
+\end{matrix}\right)=\left(\begin{matrix}1 & 2 & 1 & 3\\
+0 & 1 & 2 & 1\\
+0 & -1 & -2 & -2\\
+0 & 1 & 8 & 12
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $L_{2}=\left(\begin{matrix}1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 1 & 1 & 0\\
+0 & -1 & 0 & 1
+\end{matrix}\right)\:L_{2}L_{1}P_{1,2}A=\left(\begin{matrix}1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 1 & 1 & 0\\
+0 & -1 & 0 & 1
+\end{matrix}\right).\left(\begin{matrix}1 & 2 & 1 & 3\\
+0 & 1 & 2 & 1\\
+0 & -1 & -2 & -2\\
+0 & 1 & 8 & 12
+\end{matrix}\right)=\left(\begin{matrix}1 & 2 & 1 & 3\\
+0 & 1 & 2 & 1\\
+0 & 0 & 0 & -1\\
+0 & 0 & 6 & 11
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{3,4}=\left(\begin{matrix}1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 1 & 0
+\end{matrix}\right)\ P_{3,4}L_{2}L_{1}P_{1,2}A=\left(\begin{matrix}1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 1 & 1 & 0\\
+0 & -1 & 0 & 1
+\end{matrix}\right).\left(\begin{matrix}1 & 2 & 1 & 3\\
+0 & 1 & 2 & 1\\
+0 & 0 & 0 & -1\\
+0 & 0 & 6 & 11
+\end{matrix}\right)=\left(\begin{matrix}1 & 2 & 1 & 3\\
+0 & 1 & 2 & 1\\
+0 & 0 & 6 & 11\\
+0 & 0 & 0 & -1
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una vez obtenidas los P's puedo tener los mismos P's y distintos L's 
+\begin_inset Formula $\rightarrow P_{3,4}L_{2}L_{1}P_{1,2}A=\vec{L_{2}}\vec{L_{1}}P_{3,4}P_{1,2}A$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{L_{1}}=\left(\begin{matrix}1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+-1 & 1 & 0 & 1
+\end{matrix}\right),\;L_{1}P_{3,4}P_{1,2}A=\left(\begin{matrix}1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 1 & 0
+\end{matrix}\right)\left(\begin{matrix}1 & 2 & 1 & 3\\
+0 & 1 & 2 & 1\\
+0 & 1 & 8 & 12\\
+1 & 1 & -1 & 1
+\end{matrix}\right)=\left(\begin{matrix}1 & 2 & 1 & 3\\
+0 & 1 & 2 & 1\\
+0 & 1 & 8 & 12\\
+0 & -1 & -2 & -2
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Todo esto en codigo
+\begin_inset Formula $\rightarrow\left[l,u,p\right]=lu(A)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para encontrar 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Ax=b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P\left(AX\right)=Pb$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $L\left(UX\right)=Pb$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $UX=y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{cases}
+Ly=Pb\rightsquigarrow & y\\
+UX=y\rightsquigarrow & x
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aplico la descomposicion LU al sistema
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Ax=\left(\begin{matrix}\vdots\\
+1\\
+\vdots
+\end{matrix}\right)\rightsquigarrow i$
+\end_inset
+
+ para cada 
+\begin_inset Formula $1\leq i\leq n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Octave
+\end_layout
+
+\begin_layout Standard
+for i = 1:n
+\end_layout
+
+\begin_layout Standard
+| id = eye(n);
+\end_layout
+
+\begin_layout Standard
+| b = p(:,i);
+\end_layout
+
+\begin_layout Standard
+| y = l
+\backslash
+b;
+\end_layout
+
+\begin_layout Standard
+| x = u
+\backslash
+y;
+\end_layout
+
+\begin_layout Standard
+| A_inv(:,i)=x;
+\end_layout
+
+\begin_layout Standard
+end
+\end_layout
+
+\begin_layout Subsection
+Choleskay:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Def:
+\series default
+ 
+\begin_inset Formula $A\epsilon\Re^{nxn}$
+\end_inset
+
+simetrica, definida positiva
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=A^{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\overline{x}^{t}A\overline{x}>0\:\forall\overline{x}\ne0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Observaciones:
+\end_layout
+
+\begin_layout Enumerate
+A simetrica positiva 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+A es NO singular, osea inversible
+\end_layout
+
+\begin_layout Enumerate
+A(k) menor principal de A de orden k, si A simetrica positiva 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+A(k) simetrica y definida positiva
+\end_layout
+
+\begin_layout Enumerate
+A simetrica y positiva 
+\begin_inset Formula $a_{ij}>0\:\forall j=1,...,n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Teorema:
+\end_layout
+
+\begin_layout Standard
+Si A es simetrica positiva 
+\begin_inset Formula $\rightarrow\exists!$
+\end_inset
+
+matriz L con 
+\begin_inset Formula $l_{ii}>0\:/A=LL^{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Dem
+\series default
+ 3x3: 
+\begin_inset Formula $A=\left(\begin{matrix}l_{11} & 0 & 0\\
+l_{21} & l_{22} & 0\\
+l_{31} & l_{32} & l_{33}
+\end{matrix}\right)\left(\begin{matrix}l_{11} & l_{12} & l_{13}\\
+0 & l_{22} & l_{23}\\
+0 & 0 & l_{33}
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $a_{11}=l_{11}^{2}\rightarrow\sqrt{a_{11}}=l_{11}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $a_{12}=l_{12}l_{21}\rightarrow l_{21}=\frac{a_{12}}{l_{11}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $a_{13}=l_{11}l_{13}\rightarrow l_{31}=\frac{a_{13}}{l_{11}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y asi con todos los elementos.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Dem 
+\series default
+nxn: 
+\begin_inset Formula $\left(\begin{matrix}a_{11} & \dotsb & a_{n1}\\
+\vdots & \ddots & \vdots\\
+a_{1n} & \dotsb & a_{nn}
+\end{matrix}\right)=\left(\begin{matrix}l_{11} & 0 & \dotsb & 0\\
+l_{21} & l_{22} & \dotsb & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+l_{n1} & \dotsb & \dotsb & l_{nn}
+\end{matrix}\right)\left(\begin{matrix}l_{11} & l_{12} & \dotsb & l_{1n}\\
+0 & l_{22} & \dotsb & l_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \dotsb & l_{nn}
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Algoritmo: para j=1,...,n.
+ 
+\begin_inset Formula $l_{jj}=\left(a_{jj}-\sum_{i=1}^{j-1}l_{ji}^{2}\right)^{1/2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para i=j+1,....,n
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $l_{ij}=\frac{a_{ij}-\sum_{k=1}^{j-1}l_{ik}l_{jk}}{l_{jj}}$
 \end_inset
 
 

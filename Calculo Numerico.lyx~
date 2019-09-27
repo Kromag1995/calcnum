@@ -20,7 +20,7 @@ subequations
 \maintain_unincluded_children false
 \language spanish-mexico
 \language_package auto
-\inputencoding auto
+\inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -323,7 +323,7 @@ x\left(t_{0}\right)=x_{0}
 \end_inset
 
 con 
-\begin_inset Formula $i\epsilon0,1,2,...,n-1$
+\begin_inset Formula $i\ni0,1,2,...,n-1$
 \end_inset
 
  y 
@@ -335,7 +335,7 @@ con
 \end_inset
 
 Idea 
-\begin_inset Formula $x\left(t_{i}\right)parecidox_{i}$
+\begin_inset Formula $x\left(t_{i}\right)\sim x_{i}$
 \end_inset
 
 
@@ -1817,6 +1817,10 @@ se tiene que:
 \begin_inset Formula $\left(\left(\left|x_{1}\right|,...,\left|x_{n}\right|\right).\left(\left|x_{1}\right|,...,\left|x_{n}\right|\right)\right)\left(\left(1,...,1\right).\left(1,...,1\right)\right)$
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
@@ -3670,6 +3674,614 @@ Para i=j+1,....,n
 \begin_inset Formula $l_{ij}=\frac{a_{ij}-\sum_{k=1}^{j-1}l_{ik}l_{jk}}{l_{jj}}$
 \end_inset
 
+
+\end_layout
+
+\begin_layout Section
+17/09
+\end_layout
+
+\begin_layout Standard
+¿Que es multiplicar 
+\begin_inset Formula $A\epsilon\mathbb{R}^{nxn}$
+\end_inset
+
+ a derecha por un vector columna?
+\end_layout
+
+\begin_layout Standard
+Es hacer combinacion lineal con las columnas A
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Ax=\left(\begin{matrix}A_{1} & |A_{2}| & \dotsb & |A_{n}\end{matrix}\right)\left(\begin{matrix}x_{1}\\
+\vdots\\
+x_{n}
+\end{matrix}\right)=A_{1}x_{1}+A_{2}x_{2}+\dotsb+A_{n}x_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Que es multiplicar 
+\begin_inset Formula $A\epsilon\mathbb{R}^{mxn}$
+\end_inset
+
+ a derecha por una matriz 
+\begin_inset Formula $B\epsilon\mathbb{R}^{nxp}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+Es hacer lo mismo muchas veces
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $AB=\left(\begin{matrix}A_{1}| & \dotsb & |A_{n}\end{matrix}\right)\left(\begin{matrix}B_{1}| & \dotsb & |B_{n}\end{matrix}\right)=\left(\begin{matrix}\dotsb & \left|\sum_{k=1}^{m}B_{kj}A_{k}\right| & \dotsb\end{matrix}\right)$
+\end_inset
+
+(Columna j-esima)
+\end_layout
+
+\begin_layout Subsection
+Descomposicion QR
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Def
+\series default
+:
+\begin_inset Formula $A\epsilon\mathbb{R}^{nxn}$
+\end_inset
+
+ es:
+\end_layout
+
+\begin_layout Enumerate
+Simetrica si 
+\begin_inset Formula $A^{T}=A$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ortogonal si 
+\begin_inset Formula $A^{T}=A^{-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A\epsilon\mathbb{C}^{nxn}$
+\end_inset
+
+ es:
+\end_layout
+
+\begin_layout Enumerate
+Hermetica si 
+\begin_inset Formula $A^{*}=A$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Unitaria si 
+\begin_inset Formula $A^{*}=A^{-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Porblema de descomposicion QR
+\end_layout
+
+\begin_layout Standard
+Dada 
+\begin_inset Formula $A\epsilon\mathbb{C}^{mxn}$
+\end_inset
+
+, escribirla como 
+\begin_inset Formula $A=QR$
+\end_inset
+
+ , con 
+\begin_inset Formula $Q\epsilon\mathbb{C}^{nxn}$
+\end_inset
+
+unitaria y 
+\begin_inset Formula $R\epsilon\mathbb{C}^{mxn}$
+\end_inset
+
+ triangular superior.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A=\left(\begin{matrix}A_{1}| & \dotsb & |A_{n}\end{matrix}\right)=\left(\begin{matrix}Q_{1}| & \dotsb & |Q_{n}\end{matrix}\right)\left(\begin{matrix}r_{11} & \dotsb & r_{1m}\\
+0 & \ddots & \vdots\\
+0 & 0 & r_{nm}
+\end{matrix}\right)=\left(\begin{matrix}Q_{1}r_{11}| & \dotsb & |Q_{n}r_{nm}\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Proceso de Gramn-Schmidt
+\end_layout
+
+\begin_layout Standard
+Supongamos que 
+\begin_inset Formula $\left\{ v_{1},\dotsb,v_{r}\right\} $
+\end_inset
+
+ es un conjunto LI en (V,<,>).
+ Hay norma, angulo, etc.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $S=<v_{1},\dotsb,v_{r}>$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Construimos 
+\begin_inset Formula $w_{1},w_{2},\dotsb,w_{r}$
+\end_inset
+
+con estas propiedades
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left\{ w_{1},\dotsb,w_{r}\right\} $
+\end_inset
+
+ base ortonormal de S
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left\langle v_{1},\dotsb,v_{j}\right\rangle =\left\langle w_{1},\dotsb,w_{j}\right\rangle ,1\leq j\leq r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Construyo vectores auxiliares 
+\begin_inset Formula $u_{1},u_{2},\dotsb,u_{r}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v_{1}$
+\end_inset
+
+ 
+\begin_inset Formula $u_{1}\coloneqq v_{1};w_{1}=\frac{u_{1}}{\left|\left|u_{1}\right|\right|}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v_{2}\:u_{2}\coloneqq v_{2}-proy(v_{2},w_{1});\:w_{2}=\frac{u_{2}}{\left|\left|u_{2}\right|\right|}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $proy(v,u)=\frac{\left\langle v,u\right\rangle }{\left|\left|u\right|\right|^{2}}.u$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Coordenadas en una base ortonormal.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left\{ u_{1},\dotsb,u_{n}\right\} $
+\end_inset
+
+BON
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v\epsilon\left\langle u_{1},\dotsb,u_{n}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v=\sum_{i=1}^{m}\alpha_{i}u_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\alpha_{i}=\left\langle v,u_{i}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A=\left(\begin{matrix}2 & 1 & 1 & 2\\
+0 & 1 & 1 & -3\\
+-2 & -1 & 1 & 0
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Obs sobre las R: no tienen porque ser cuadradas, la diagonal principal quedaria
+ algo asi:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{matrix}\\
+0\\
+\vdots & \ddots\\
+0 & \dotsb & 0
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $q\epsilon\mathbb{R}^{3x3}\rightarrow$
+\end_inset
+
+columnas son BON de 
+\begin_inset Formula $\mathbb{R}^{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R\epsilon\mathbb{R}^{3x4}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+si 
+\begin_inset Formula $q=\left(q_{1}|q_{2}|q_{3}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $A=\left(A_{1}|A_{2}|A_{3}|A_{4}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left\langle A_{1}\right\rangle \subseteq\left\langle q_{1}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left\langle A_{1},A_{2}\right\rangle \subseteq\left\langle q_{1},q_{2}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left\langle A_{1},A_{2},A_{3}\right\rangle \subseteq\left\langle q_{1},q_{2},q_{3}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $S=\left\langle \left(2,0,-2\right),\left(1,1,-1\right),\left(1,1,1\right)\right\rangle =\left\langle v_{1},v_{2},v_{3}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v_{1}=\left(2,0,-2\right)\rightarrow u_{1}=\left(2,0,-2\right)\rightarrow w_{1}=\left(\frac{1}{\sqrt{2}},0,-\frac{1}{\sqrt{2}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v_{2}=\left(1,1,-1\right)\rightarrow u_{2}=v_{2}-proy\left(v_{2},w_{1}\right)=\left(1,1,-1\right)-\left\langle v_{2},w_{1}\right\rangle .w_{1}=\left(1,1,-1\right)-\frac{2}{\sqrt{2}}.\left(\frac{1}{\sqrt{2}},0,-\frac{1}{\sqrt{2}}\right)=\left(1,1,-1\right)-\left(1,0,-1\right)=\left(0,1,0\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $w_{2}=\left(0,1,0\right)$
+\end_inset
+
+, porque la norma es 1
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u_{3}=v_{3}-proy_{w_{1}}\left(v_{3}\right)-proy_{w_{2}}\left(v_{3}\right)=\left(1,1,1\right)-\left\langle v_{3},w_{1}\right\rangle w_{1}-\left\langle v_{3},w_{2}\right\rangle w_{2}=\left(1,1,1\right)-0.w_{1}-1.\left(0,1,0\right)=\left(1,0,1\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $w_{3}=\left(\frac{1}{\sqrt{2}},0,\frac{1}{\sqrt{2}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tomamos q asi:
+\begin_inset Formula $q=\left(\begin{matrix}\frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}}\\
+0 & 1 & 0\\
+\frac{-1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}}
+\end{matrix}\right)\epsilon\mathbb{R}^{3x3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces lo unico que me queda es encontrar R, que lo puedo hacer resolviendo
+ el sistema QR=A
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A=\left(\begin{matrix}2 & 1 & 1 & 2\\
+0 & 1 & 1 & -3\\
+-2 & -1 & 1 & 0
+\end{matrix}\right)=QR=\left(\begin{matrix}\frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}}\\
+0 & 1 & 0\\
+\frac{-1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}}
+\end{matrix}\right)\left(\begin{matrix}2\sqrt{2} & \sqrt{2} & 0 & \sqrt{2}\\
+0 & 1 & 1 & -3\\
+0 & 0 & \sqrt{2} & \sqrt{2}
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Metodo de Haus Holder
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Lema:
+\series default
+ sean 
+\begin_inset Formula $x,y\epsilon\mathbb{C}^{n}$
+\end_inset
+
+tales que
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x\neq y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left|\left|x\right|\right|_{2}=\left|\left|y\right|\right|_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left\langle x,y\right\rangle =y^{*}.x\epsilon\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces 
+\begin_inset Formula $U=I-2v.v^{*}$
+\end_inset
+
+ donde 
+\begin_inset Formula $v=\frac{x-y}{\left|\left|x-y\right|\right|_{2}}$
+\end_inset
+
+ es unitaria y 
+\begin_inset Formula $Ux=y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Idea:
+\series default
+ supongo que 
+\begin_inset Formula $U_{1}A=\left(\begin{matrix}\beta_{1} & \begin{matrix}0 & \dotsb & 0\end{matrix}\\
+\begin{matrix}0\\
+\vdots\\
+0
+\end{matrix} & \vec{A_{1}}
+\end{matrix}\right)$
+\end_inset
+
+, con 
+\begin_inset Formula $U_{1}$
+\end_inset
+
+ unitaria.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vec{U_{2}}\vec{A}_{1}=\left(\begin{matrix}\beta_{2} & \begin{matrix}0 & \dotsb & 0\end{matrix}\\
+\begin{matrix}0\\
+\vdots\\
+0
+\end{matrix} & \vec{A_{2}}
+\end{matrix}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $U_{2}=\left(\begin{matrix}1 & \begin{matrix}0 & \dotsb & 0\end{matrix}\\
+\begin{matrix}0\\
+\vdots\\
+0
+\end{matrix} & \vec{U_{2}}
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rightarrow U_{2}U_{1}A=\left(\begin{matrix}\begin{matrix}\beta_{1} & \eta\\
+0 & \beta_{2}
+\end{matrix} & \begin{matrix}0 & \dotsb & 0\end{matrix}\\
+\begin{matrix}0 & 0\\
+\vdots & \vdots\\
+0 & 0
+\end{matrix} & \vec{A_{2}}
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces puedo iterar varias veces
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $U_{k}U_{k-1}\dotsb U_{1}A=R$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A=\left(U_{1}^{-1}\dotsb U_{k}^{-1}\right).R=\left(U_{1}^{T}\dotsb U_{k}^{T}\right).R$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como es en cada paso
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A\epsilon\mathbb{C}^{nxn}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $A=\left(\begin{matrix}a_{11}\\
+\vdots\\
+a_{n1}
+\end{matrix}|A_{2}|\dotsb|A_{m}\right)$
+\end_inset
+
+quiero 
+\begin_inset Formula $UA=\left(\begin{matrix}1\\
+0\\
+\vdots\\
+0
+\end{matrix}|\vec{A_{2}}|\dotsb|\vec{A_{m}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vamos a usar el lema
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\beta=\begin{cases}
+\frac{a_{11}}{\left|\left|a_{11}\right|\right|}\left|\left|A_{1}\right|\right| & si\:a_{11}\neq0\\
+\left|\left|A_{1}\right|\right| & si\:a_{11}=0
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tomar 
+\begin_inset Formula $x=A_{1},\:y=\left(\begin{matrix}\beta\\
+0\\
+\vdots\\
+0
+\end{matrix}\right)$
+\end_inset
+
+ y usar el lema para armar U
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ojo:
+\series default
+ si 
+\begin_inset Formula $A=\left(\begin{matrix}*\\
+0\\
+\vdots\\
+0
+\end{matrix}|A_{2}|\dotsb|A_{m}\right)$
+\end_inset
+
+ ya tiene columan 1 
+\begin_inset Formula $\rightarrow U=I_{m}$
+\end_inset
+
+ y listo.
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 

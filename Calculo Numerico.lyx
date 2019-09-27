@@ -20,7 +20,7 @@ subequations
 \maintain_unincluded_children false
 \language spanish-mexico
 \language_package auto
-\inputencoding auto
+\inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -191,14 +191,18 @@ x''\left(t\right)=f_{t}\left(t,x\left(t\right)\right)+f_{x}\left(t,x\left(t\righ
 \begin_inset Formula $x\left(t+h\right)=x\left(t\right)+h.f\left(t,x\right)+h^{2}\left(f_{t}\left(t,x\left(t\right)\right)+f_{x}\left(t,x\left(t\right)\right)f\left(t,x\left(t\right)\right)\right)/2$
 \end_inset
 
- Metodo de Taylor de orden 2
-\begin_inset Newline newline
-\end_inset
+ 
+\end_layout
 
+\begin_layout Standard
+Metodo de Taylor de orden 2
+\end_layout
+
+\begin_layout Standard
 Aplicado a cada coordenada de un vector x.
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Standard
 Ejemplo:
 \begin_inset Formula $\begin{cases}
 x\left(t\right)=t*sen\left(x\left(t\right)\right)\\
@@ -323,7 +327,7 @@ x\left(t_{0}\right)=x_{0}
 \end_inset
 
 con 
-\begin_inset Formula $i\epsilon0,1,2,...,n-1$
+\begin_inset Formula $i\ni0,1,2,...,n-1$
 \end_inset
 
  y 
@@ -335,7 +339,7 @@ con
 \end_inset
 
 Idea 
-\begin_inset Formula $x\left(t_{i}\right)parecidox_{i}$
+\begin_inset Formula $x\left(t_{i}\right)\sim x_{i}$
 \end_inset
 
 

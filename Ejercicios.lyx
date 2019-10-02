@@ -432,7 +432,69 @@ B)
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula $y_{i}=\left(1+\lambda h\right)^{i}y_{0}\;con\lambda<0$
+\end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\lambda h=-1$
+\end_inset
+
+ caso tribial
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $0>\lambda h>-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $1>1+\lambda h>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y_{0}>y_{i}=\left(1+\lambda h\right)^{i}y_{0}>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rightarrow y_{0}>y_{i}>y_{i+1}\underset{i\to\infty}{\lim}\to0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces basta pedir que 
+\begin_inset Formula $\lambda h<0$
+\end_inset
+
+, y como 
+\begin_inset Formula $\lambda<0$
+\end_inset
+
+
+\begin_inset Formula $\rightarrow\forall0<h$
+\end_inset
+
+ y 
+\begin_inset Formula $h\geq\left|\frac{1}{\lambda}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+D)
 \end_layout
 
 \end_body

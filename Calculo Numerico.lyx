@@ -4285,8 +4285,2075 @@ Ojo:
  y listo.
 \end_layout
 
+\begin_layout Section
+8/10
+\end_layout
+
+\begin_layout Subsection
+Resolucion de ecuaciones no lineales.
+\end_layout
+
+\begin_layout Standard
+Ecuacion en 
+\begin_inset Formula $\mathbb{R}^{1}$
+\end_inset
+
+, 
+\begin_inset Formula $f\left(x\right)=0$
+\end_inset
+
+ con f en general.
+\end_layout
+
+\begin_layout Standard
+Problema: aproximar 
+\begin_inset Formula $r\epsilon Dom\left(f\right)$
+\end_inset
+
+ con 
+\begin_inset Formula $f\left(r\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Supongamos:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $Dom\left(f\right)$
+\end_inset
+
+ intervalo 
+\begin_inset Formula $I\subseteq\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ continua
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\exists!r\epsilon I$
+\end_inset
+
+ con 
+\begin_inset Formula $f\left(r\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Metodos de un punto
+\end_layout
+
+\begin_layout Standard
+Contruyen una sucesion: 
+\begin_inset Formula $x_{0},x_{1},...,x_{m},...\subseteq Dom\left(f\right)$
+\end_inset
+
+ con 
+\begin_inset Formula $x_{m}\rightarrow r$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 
+\series bold
+Ejemplos
+\series default
+: Newton_Rapson, Secante, Punto fijo,etc.
+\end_layout
+
+\begin_layout Subsubsection
+Metodos de dos puntos (Bracketina)
+\end_layout
+
+\begin_layout Standard
+Construyen 3 sucesiones 
+\begin_inset Formula $\left(a_{m}\right)_{m},\left(b_{m}\right)_{m},\left(c_{m}\right)_{m}$
+\end_inset
+
+ tales que:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $r\epsilon\left[a_{m},b_{m}\right]\subset Dom\left(f\right)$
+\end_inset
+
+ (
+\begin_inset Formula $f\left(a_{m}\right)f\left(b_{m}\right)<0$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $c_{m}\epsilon\left[a_{m},b_{m}\right]$
+\end_inset
+
+ entonces 
+\begin_inset Formula $c_{m}\rightarrow_{m}r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplos
+\series default
+: Biseccion, Regula Falsi
+\end_layout
+
+\begin_layout Subsection
+Estructura de las implementaciones.
+\end_layout
+
+\begin_layout Subsubsection
+Metodo de un punto
+\end_layout
+
+\begin_layout Standard
+#Octave
+\end_layout
+
+\begin_layout Standard
+function r = metodo(f,x0)
+\end_layout
+
+\begin_layout Standard
+| [iniciacion]
+\end_layout
+
+\begin_layout Standard
+| while [condicion]:
+\end_layout
+
+\begin_layout Standard
+| | x(m) = g(x(m-1))
+\end_layout
+
+\begin_layout Standard
+| end
+\end_layout
+
+\begin_layout Standard
+|r =....
+\end_layout
+
+\begin_layout Standard
+end
+\end_layout
+
+\begin_layout Subsubsection
+Metodo de dos puntos
+\end_layout
+
+\begin_layout Standard
+function r = metodo(j,a,b)
+\end_layout
+
+\begin_layout Standard
+[iniciacion]
+\end_layout
+
+\begin_layout Standard
+c = ....
+\end_layout
+
+\begin_layout Standard
+while [condicion]
+\end_layout
+
+\begin_layout Standard
+| a=.....
+\end_layout
+
+\begin_layout Standard
+| b=.....
+\end_layout
+
+\begin_layout Standard
+| c=.....
+\end_layout
+
+\begin_layout Standard
+end
+\end_layout
+
+\begin_layout Subsubsection
+Metodo de biseccion
+\end_layout
+
+\begin_layout Standard
+Inicialmente se tiene 
+\begin_inset Formula $\left[a_{0},b_{0}\right]$
+\end_inset
+
+ con 
+\begin_inset Formula $f\left(a_{0}\right)f\left(b_{0}\right)<0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Despues hago 
+\begin_inset Formula $c_{0}=\frac{a_{0}+b_{0}}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $f\left(c_{0}\right)=0$
+\end_inset
+
+ listo!.
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $f\left(c_{0}\right)\neq0$
+\end_inset
+
+ entonces pasa alguna de las siguientes:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $sg\left(f\left(c_{0}\right)\right)=sg\left(f\left(a_{0}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $sg\left(f\left(c_{0}\right)\right)=sg\left(f\left(b_{0}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces hago un nuevo intervalo con 
+\begin_inset Formula $\left[a_{1},b_{1}\right]$
+\end_inset
+
+ que es 
+\begin_inset Formula $\left[a_{0},c_{0}\right]$
+\end_inset
+
+ o 
+\begin_inset Formula $\left[c_{0},b_{0}\right]$
+\end_inset
+
+ segun cual verifica que tiene signos distintos en los bordes.
+\end_layout
+
+\begin_layout Standard
+Ahora vuelvo al paso inicial.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Pregunta 
+\series default
+¿Cuando Parar?
+\end_layout
+
+\begin_layout Standard
+Iterar hasta que:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left|f\left(x_{m}\right)\right|<\boldsymbol{\varepsilon},\left|f\left(c_{m}\right)\right|<\boldsymbol{\varepsilon}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left|b_{m}-a_{m}\right|<\boldsymbol{\varepsilon}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left|c_{m}-c_{m-1}\right|<\boldsymbol{\varepsilon}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $m>N$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+#octave
+\end_layout
+
+\begin_layout Standard
+function r = biseccion(f,a,b)
+\end_layout
+
+\begin_layout Standard
+| max_iter = 50;
+\end_layout
+
+\begin_layout Standard
+| tol = 0.1^12;
+\end_layout
+
+\begin_layout Standard
+| c = (a+b)/2
+\end_layout
+
+\begin_layout Standard
+| n=1
+\end_layout
+
+\begin_layout Standard
+| while n <= mac_iter && abs(b-a)>tol
+\end_layout
+
+\begin_layout Standard
+| | if f(c) == 0
+\end_layout
+
+\begin_layout Standard
+| | | terminar
+\end_layout
+
+\begin_layout Standard
+| | elseif sign(f(c)) == sign(f(a))
+\end_layout
+
+\begin_layout Standard
+| | | a = c
+\end_layout
+
+\begin_layout Standard
+| | else 
+\end_layout
+
+\begin_layout Standard
+| | | b = c
+\end_layout
+
+\begin_layout Standard
+| | endif
+\end_layout
+
+\begin_layout Standard
+| | c = (a+b)/2
+\end_layout
+
+\begin_layout Standard
+| | n=n+1
+\end_layout
+
+\begin_layout Standard
+| end
+\end_layout
+
+\begin_layout Subsubsection
+Metodo Regula Falsi.
+\end_layout
+
+\begin_layout Standard
+En lugar de tomar 
+\begin_inset Formula $c=\frac{a+b}{2}$
+\end_inset
+
+, tomar c como el 0 de la funcion lineal que pasa por (a, f(a)) y (b,f(b)).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $L\left(x\right)=f\left(a\right)+\frac{f\left(b\right)-f(a)}{b-a}\left(x-a\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $L\left(c\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $0=f\left(a\right)+\frac{f\left(b\right)-f\left(a\right)}{b-a}(c-a)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $c=-f(a)\frac{b-a}{f\left(b\right)-f\left(a\right)}+a$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $c=\frac{a*f\left(b\right)-b*f\left(a\right)}{f\left(b\right)-f\left(a\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Obs: este intervalo no tiende a 0!!!
+\end_layout
+
+\begin_layout Standard
+#octave
+\end_layout
+
+\begin_layout Standard
+function r = biseccion(f,a,b)
+\end_layout
+
+\begin_layout Standard
+| max_iter = 50;
+\end_layout
+
+\begin_layout Standard
+| tol = 0.1^12;
+\end_layout
+
+\begin_layout Standard
+| c = (a*f(b)-b*f(a))/(f(b)-f(a))
+\end_layout
+
+\begin_layout Standard
+| n=1
+\end_layout
+
+\begin_layout Standard
+| while n <= mac_iter #No sirve esta 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+abs(b-a)>tol
+\end_layout
+
+\begin_layout Standard
+| | if abs(f(c)) < tol
+\end_layout
+
+\begin_layout Standard
+| | | terminar
+\end_layout
+
+\begin_layout Standard
+| | elseif sign(f(c)) == sign(f(a))
+\end_layout
+
+\begin_layout Standard
+| | | a = c
+\end_layout
+
+\begin_layout Standard
+| | else 
+\end_layout
+
+\begin_layout Standard
+| | | b = c
+\end_layout
+
+\begin_layout Standard
+| | endif
+\end_layout
+
+\begin_layout Standard
+| | c = (a*f(b)-b*f(a))/(f(b)-f(a))
+\end_layout
+
+\begin_layout Standard
+| | n=n+1
+\end_layout
+
+\begin_layout Standard
+| end
+\end_layout
+
+\begin_layout Section
+11/10
+\end_layout
+
+\begin_layout Subsection
+Newton-Raphson: metodo de la tangente
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y=f'\left(x_{n}\right)\left(x-x_{n}\right)+f\left(x_{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}$
+\end_inset
+
+ se define como el cero de la Rt
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $0=f'\left(x_{n}\right)\left(x_{n+1}-x_{n}\right)+f\left(x_{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=x_{n}-\frac{f\left(x_{n}\right)}{f'\left(x_{n}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Necesito que exista la derivada y 
+\begin_inset Formula $f'\neq0$
+\end_inset
+
+ en cierto intervalo.
+\end_layout
+
+\begin_layout Subsubsection
+Algoritmo de N-R
+\end_layout
+
+\begin_layout Standard
+#Octave
+\end_layout
+
+\begin_layout Standard
+j = 0;
+\end_layout
+
+\begin_layout Standard
+X = x1;
+\end_layout
+
+\begin_layout Standard
+Z = X - f(X) / f_p(X)
+\end_layout
+
+\begin_layout Standard
+while (j<Max_Iter && abs(Z-X)>tol):
+\end_layout
+
+\begin_layout Standard
+| X = Z
+\end_layout
+
+\begin_layout Standard
+| Z = X - f(X)/ f_p(X)
+\end_layout
+
+\begin_layout Standard
+| j = j + 1
+\end_layout
+
+\begin_layout Standard
+end
+\end_layout
+
+\begin_layout Subsubsection
+Alternatvida: Metodo de la secante
+\end_layout
+
+\begin_layout Standard
+Aproximar a la derivada por el crociente incremental.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y=f\left(xoy\right)\left(x-x_{n}\right)+f\left(x_{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y=\frac{f\left(x_{n}\right)-f\left(x_{n-1}\right)}{x_{n}-x_{n-1}}\left(x-x_{n}\right)+f\left(x_{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $0=\frac{f\left(x_{n}\right)-f\left(x_{n-1}\right)}{x_{n}-x_{n-1}}\left(x_{n+1}-x_{n}\right)+f\left(x_{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=x_{n}-f\left(x_{n}\right)\frac{\left(x_{n}-x_{n-1}\right)}{f\left(x_{n}\right)-f\left(x_{n-1}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+¿NR converge siempre?
+\end_layout
+
+\begin_layout Standard
+No, puede fallar.
+\end_layout
+
+\begin_layout Paragraph
+Fallas de Newton-Raphson:
+\end_layout
+
+\begin_layout Itemize
+Finalizacion prematura o Breakdown: para algun 
+\begin_inset Formula $x_{n}\rightsquigarrow f'\left(x_{n}=0\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $f\left(x\right)=x^{3}-4x-1$
+\end_inset
+
+, 
+\begin_inset Formula $f'\left(x\right)=3x^{2}-4$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{0}=0.838917$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{1}=-115470$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=x_{n}-\frac{f\left(x_{n}\right)}{f'\left(x_{n}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{1}=x_{0}-\frac{f\left(x_{0}\right)}{f'\left(x_{0}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{2}=x_{1}-\frac{f\left(x_{1}\right)}{f'\left(x_{1}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left\{ x_{n}\right\} $
+\end_inset
+
+se aleja de la raiz r.
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $f\left(x\right)=xe^{-x}$
+\end_inset
+
+, 
+\begin_inset Formula $x_{0}=1.3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=x_{n}-\frac{f\left(x_{n}\right)}{f'\left(x_{n}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f'\left(x\right)=1e^{-x}+xe^{-x}*-1=e^{-x}\left(1-x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=x_{n}-\frac{x_{n}e^{-x_{n}}}{e^{-x_{n}}\left(1-x_{n}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{1}=x_{0}-\frac{x_{0}e^{-x_{0}}}{e^{-x_{0}}\left(1-x_{0}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{2}=x_{1}-\frac{x_{1}e^{-x_{1}}}{e^{-x_{1}}\left(1-x_{1}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Calculando se ve que es creciente y no acotada, entonces diverge.
+\end_layout
+
+\begin_layout Itemize
+El proceso iteratico genera una sucecion oscilante.
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $f\left(x\right)=x^{3}-2x+2,\;f'\left(x\right)=3x^{2}-2\;x_{0}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=x_{n}-\frac{f\left(x_{n}\right)}{f'\left(x_{n}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{1}=x_{0}-\frac{f\left(x_{0}\right)}{f'\left(x_{0}\right)}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{2}=x_{1}-\frac{f\left(x_{1}\right)}{f'\left(x_{1}\right)}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sucecion oscilante.
+\end_layout
+
+\begin_layout Subsection
+Sistema no lineal.
+\end_layout
+
+\begin_layout Paragraph
+Ejemplo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left\{ \begin{matrix}x^{2}+x-y^{2}=1\\
+y-sen\left(x^{2}\right)=0
+\end{matrix}\right.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f_{1}\left(x,y\right)=\left\{ \begin{matrix}x^{2}+x-y^{2}-1=0\\
+y-sen\left(x^{2}\right)=0
+\end{matrix}\right.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $F:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m},\;x\epsilon\mathbb{R}^{n}\quad F\left(\overline{x}\right)=\overline{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $0=Df\left(\overline{x}_{n}\right)\left(\overline{x}_{n+1}-\overline{x}_{n}\right)+f\left(\overline{x}_{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\overline{x}_{n+1}=\overline{x}_{n}-Df^{-1}\left(\overline{x}_{n}\right)f\left(\overline{x}_{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ejercicios
+\end_layout
+
+\begin_layout Standard
+1) Sea 
+\begin_inset Formula $f\left(x\right)=\left|x\right|^{\alpha}$
+\end_inset
+
+con 
+\begin_inset Formula $\alpha>0$
+\end_inset
+
+.
+ Analizar para que valores de 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ el metodo de newton es convergente, comenzando con 
+\begin_inset Formula $x_{0}\neq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left(x\right)=\left\{ \begin{matrix}x^{\alpha} & x\geq0\\
+\left(-x\right)^{\alpha} & x<0
+\end{matrix}\right.\rightarrow f'\left(x\right)=\begin{cases}
+\alpha x^{\alpha-1} & x>0\\
+-\alpha x^{\alpha-1} & x<0
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f'\left(x\right)=\alpha\left|x\right|^{\alpha}sgn(x)\quad x\neq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=x_{n}-\frac{\left|x_{n}\right|^{\alpha}}{\alpha\left|x_{n}\right|^{\alpha-1}sgn(x_{n})}=x_{n}-\frac{1}{\alpha}\left|x_{n}\right|sgn\left(x_{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=x_{n}\left(1-\frac{1}{\alpha}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=x_{n}\left(1-\frac{1}{\alpha}\right)=x_{n-1}\left(1-\frac{1}{\alpha}\right)^{2}=...=x_{0}\left(1-\frac{1}{\alpha}\right)^{n+1}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Para que valores de 
+\begin_inset Formula $\alpha>0,\;x_{n}\rightarrow0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X_{n}\rightarrow0\iff\left|1-\frac{1}{\alpha}\right|<1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-1<1-\frac{1}{\alpha}<1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-2<-\frac{1}{\alpha}<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $2>\frac{1}{\alpha}>0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $2>\frac{1}{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $2\alpha>1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\alpha>\frac{1}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es importante calcular el error para saber el radio de convergencia.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=\left(1-\frac{1}{\alpha}\right)^{n+1}x_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|x_{n+1}-0\right|=\left|1-\frac{1}{\alpha}\right|\left|x_{n}-0\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $e_{n+1}=\left|1-\frac{1}{\alpha}\right|e_{n}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{e_{n+1}}{e_{n}}=\left|1-\frac{1}{\alpha}\right|<1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+2) Considere 
+\begin_inset Formula $f\left(x\right)=\begin{cases}
+sg\left(x\right)e^{-\frac{1}{x^{2}}} & x\neq0\\
+0 & x=0
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hallar la raiz en 0 por el metodo de Newton.
+ ¿Que puede decir de la convergencia?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f'\left(x\right)=\begin{cases}
+sg\left(x\right)e^{-\frac{1}{x^{2}}}2x^{-3} & x\neq0\\
+0 & x=0
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=x_{n}-\frac{sg\left(x_{n}\right)e^{-\frac{1}{x_{n}^{2}}}}{sg\left(x_{n}\right)e^{-\frac{1}{x_{n}^{2}}}2x_{n}^{-3}}=x_{n}-\frac{x_{n}^{3}}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=x_{n}\left(1-\frac{x_{n}^{2}}{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{1}=x_{0}\left(1-\frac{x_{0}^{2}}{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Podemos pedir que 
+\begin_inset Formula $\left|1-\frac{x_{0}^{2}}{2}\right|<1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-1<1-\frac{x_{0}^{2}}{2}<1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-2<-\frac{x_{0}^{2}}{2}<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-4<-x_{0}^{2}<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $4>x_{0}^{2}>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $2>\left|x_{0}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|x_{1}\right|=\left|x_{0}\right|\left|1-\frac{x_{0}}{2}\right|<\left|x_{0}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|x_{1}\right|<\left|x_{0}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{2}=x_{1}\left(1-\frac{x_{1}^{2}}{2}\right)\rightarrow\left|x_{2}\right|<\left|x_{1}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por induccion 
+\begin_inset Formula $\left|x_{i}\right|$
+\end_inset
+
+son decrecientes.
+ Quiero pedir que NO cambie de signo (para que no oscile).
+\end_layout
+
+\begin_layout Standard
+Pido 
+\begin_inset Formula $0<1-\frac{x_{0}^{2}}{2}<1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-1<-\frac{x_{0}^{2}}{2}<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-2<-x_{0}^{2}<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\sqrt{2}>\left|x_{0}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Supongo que 
+\begin_inset Formula $0<x_{0}<\sqrt{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{1}=x_{0}\left(1-\frac{x_{0}}{2}\right)>0$
+\end_inset
+
+ ademas 
+\begin_inset Formula $\left|x_{1}\right|<\left|x_{0}\right|$
+\end_inset
+
+pero como son positivos 
+\begin_inset Formula $x_{1}<x_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Osea me construyo una sucecion monotona decreciente.
+\end_layout
+
+\begin_layout Standard
+Por induccion 
+\begin_inset Formula $x_{i}>x_{i+1}..>0$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\left\{ x_{i}\right\} $
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+decreciente y acotada inferior por 0, entonces tiene limite l.
+\end_layout
+
+\begin_layout Standard
+Tomo limite cuando 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=x_{n}\left(1-\frac{x_{n}^{2}}{2}\right)\rightarrow l=l\left(1-\frac{l^{2}}{2}\right)\rightarrow l=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si hubieramos tomado 
+\begin_inset Formula $-\sqrt{2}<x_{0}<0$
+\end_inset
+
+ la sucecion va a resultar creciente y acotada superiormente por 0 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+tiende a 0.
+\end_layout
+
+\begin_layout Section
+15/10
+\end_layout
+
+\begin_layout Subsection
+Punto Fijo
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left(x\right)=x^{3}-13x+18$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Queremos resolver 
+\begin_inset Formula $f\left(x\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x^{3}-13x+18=0\rightarrow$
+\end_inset
+
+
+\begin_inset Formula $x^{3}+18=13x\rightarrow x=\frac{x^{3}+18}{13}=g\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x^{3}-13x+18=0\rightarrow x^{3}-12x-x+18=0\rightarrow x^{3}-12x+18=x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x^{3}-13x+18=0\rightarrow xx^{2}=13x-18\rightarrow x=\frac{13x-18}{x^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se define una sucesion por iteracion, elige 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ y 
+\begin_inset Formula $x_{n+1}=g\left(x_{n}\right)$
+\end_inset
+
+.
+ Si converge es a un punto fijo.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Teo:
+\series default
+ I=
+\begin_inset Formula $\left[a,b\right]$
+\end_inset
+
+ si 
+\begin_inset Formula $g\left(I\right)\subset I\rightarrow g$
+\end_inset
+
+ tiene al menos 1 punto fijo.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Teo: 
+\series default
+Si g es derivable y 
+\begin_inset Formula $\left|g'\left(x\right)\right|\leq\lambda<1\forall x\epsilon I$
+\end_inset
+
+ y 
+\begin_inset Formula $g\left(I\right)\subset I\rightarrow$
+\end_inset
+
+tiene unico punto fijo.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Teo:
+\series default
+ 
+\begin_inset Formula $g/\;\left|g'\left(x\right)\right|\leq\lambda<1\forall x\epsilon I$
+\end_inset
+
+ y 
+\begin_inset Formula $g\left(I\right)\subset I\rightarrow\left(x_{n}\right)$
+\end_inset
+
+ def 
+\begin_inset Formula $x_{n+1}=g\left(x_{n}\right)$
+\end_inset
+
+converge al unico punto y
+\end_layout
+
+\begin_layout Standard
+1) 
+\begin_inset Formula $\left|x_{n}-r\right|\leq\lambda^{n}\left|x_{o}-r\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+2) 
+\begin_inset Formula $\left|e_{n}\right|\leq\frac{\lambda^{n}}{1-\lambda}\left|x_{1}-x_{0}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Teo:
+\series default
+ y continua en 
+\begin_inset Formula $\left(a,b\right)$
+\end_inset
+
+, 
+\begin_inset Formula $r\epsilon\left(a,b\right)$
+\end_inset
+
+, punto fijo de g.
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $\left|g'\left(r\right)\right|<1\rightarrow\exists\epsilon>0\;/$
+\end_inset
+
+ la iteracion es convergente si 
+\begin_inset Formula $x_{0}\epsilon I_{\varepsilon}=\left(r-\varepsilon,r+\varepsilon\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x^{2}-x-2=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x^{2}=x+2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|x\right|=\sqrt{x+2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $x>0$
+\end_inset
+
+ 
+\begin_inset Formula $x=\sqrt{x+2}=g\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Dom(g)=\left[-2,+\infty\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Proponemos 
+\begin_inset Formula $I=\left[0,+\infty\right)$
+\end_inset
+
+ y queremos 
+\begin_inset Formula $g\left(I\right)\subset I$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g'\left(x\right)=\frac{1}{2}\left(x+2\right)^{-\frac{1}{2}}=\frac{1}{2\sqrt{x+2}}>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rightarrow g$
+\end_inset
+
+ es creciente y 
+\begin_inset Formula $g\left(0\right)=\sqrt{2}\epsilon\left[0,\infty\right)\rightarrow g\left(I\right)\subset I$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+El metodo iterativo converge 
+\begin_inset Formula $\left|g'\left(x\right)\right|<1$
+\end_inset
+
+ y 
+\begin_inset Formula $g\left(I\right)\subset I$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|F'\left(x\right)\right|=\frac{1}{2\sqrt{x+2}}<1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $1<2\sqrt{x+2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{1}{2}<\sqrt{x+2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{1}{4}<x+2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-\frac{7}{4}<x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si arranco con 
+\begin_inset Formula $x_{0}\epsilon\left[0,+\infty\right)$
+\end_inset
+
+seguro que la iteracion 
+\begin_inset Formula $x_{n+1}=g\left(x_{n}\right)$
+\end_inset
+
+converge al punto fijo 
+\begin_inset Formula $x=2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Newton como punto fijo
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=x_{n}-\frac{f\left(x_{n}\right)}{f'\left(x_{n}\right)}=g\left(x_{n}\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Si f tiene una raiz simple en 
+\begin_inset Formula $x=r$
+\end_inset
+
+ veamos que 
+\begin_inset Formula $g\left(r\right)=r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left(r\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f'\left(r\right)\neq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g\left(r\right)=r-\frac{f\left(r\right)}{f'\left(r\right)}=r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Veamos que si 
+\begin_inset Formula $g'\left(r\right)=0$
+\end_inset
+
+ y 
+\begin_inset Formula $g''\left(0\right)\neq0\rightarrow$
+\end_inset
+
+Tiene orden 2.
+\end_layout
+
+\begin_layout Standard
+Orden de convergencia: Consideramos 
+\begin_inset Formula $g\,/\,\,g\left(r\right)=r\rightarrow g^{\left(k\right)}\left(r\right)=0\,\,\,\,1\leq k<p\rightarrow$
+\end_inset
+
+el metodo tiene orden p
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g'\left(x\right)=1-\frac{f'f'-ff''}{\left(f'\right)^{2}}=1-\frac{\left(f'\right)^{2}}{\left(f'\right)^{2}}+\frac{ff''}{\left(f'\right)^{2}}=\frac{ff''}{\left(f'\right)^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g'\left(r\right)=\frac{f\left(r\right)f''\left(r\right)}{\left(f'\left(r\right)\right)^{2}}\,\,\,\,\,f\left(r\right)=0\neq f'\left(r\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g'\left(r\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g''\left(x\right)=\frac{\left(f'f''+ff''\right)\left(f'\right)^{2}-ff''2f'f''}{\left(f'\right)^{4}}=\frac{\left(f'f''+ff''\right)\left(f'\right)-ff''2f''}{\left(f'\right)^{3}}=\frac{\left(f'\right)^{2}f''+ff'''f'-2f\left(f''\right)^{2}}{\left(f'\right)^{3}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g''\left(r\right)=\frac{f''\left(r\right)}{f'\left(r\right)\neq0}$
+\end_inset
+
+ si 
+\begin_inset Formula $f''\left(r\right)\neq0\rightarrow g''\left(r\right)\neq0$
+\end_inset
+
+ tiene orden cuadratico.
+\end_layout
+
+\begin_layout Itemize
+Si f tiene una raiz doble en 
+\begin_inset Formula $x=r$
+\end_inset
+
+, osea 
+\begin_inset Formula $f\left(r\right)=0$
+\end_inset
+
+ y 
+\begin_inset Formula $f'\left(r\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g\left(r\right)=\stackrel[x\rightarrow r]{}{lim}x-\frac{f\left(x\right)}{f'\left(x\right)}=\underset{x\rightarrow r}{lim}x-\underset{x\rightarrow r}{lim}\frac{f\left(x\right)}{f'\left(x\right)}=r-\underset{x\rightarrow r}{lim}\frac{f'\left(x\right)\rightarrow0}{f''\left(x\right)\rightarrow\neq0}=r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Veamos que en este caso 
+\begin_inset Formula $g'\left(r\right)\neq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g'\left(x\right)=\frac{ff''}{\left(f'\right)^{2}}$
+\end_inset
+
+ No puedo evaluar
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g'\left(r\right)=\underset{x\rightarrow r}{lim}\frac{ff''\rightarrow0}{\left(f'\right)^{2}\rightarrow0}=\underset{x\rightarrow r}{lim}\frac{f'f''+ff''}{2f'f''}=\underset{x\rightarrow r}{lim}\frac{1}{2}+\frac{ff'''}{2f'f''}=\frac{1}{2}+\underset{x\rightarrow r}{lim}\frac{ff'''\rightarrow0}{2f'f''\rightarrow0}=\frac{1}{2}+\underset{x\rightarrow r}{lim}\frac{f'f'''+ff''''}{2\left(f''f''+f'f'''\right)}=\frac{1}{2}\neq0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+¿Como recuperamos el orden cuadratico? Multiplicamos con un 2.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g\left(x\right)=x-{\color{lime}{\color{brown}2}}\frac{f\left(x\right)}{f'\left(x\right)}$
+\end_inset
+
+ (Si la raiz tiene multiplicidad 3 entonces agrego un 3)
+\end_layout
+
+\begin_layout Standard
+Ver que 
+\begin_inset Formula $g\left(r\right)=r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ver que tiene orden 2
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g'\left(r\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g''\left(r\right)\neq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ejercicio: 
+\begin_inset Formula $f\left(x\right)=0$
+\end_inset
+
+ siendo 
+\begin_inset Formula $f\left(x\right)=xe^{x}-\text{cos}\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Considerear el siguiente metodo de punto fijo: 
+\begin_inset Formula $xe^{x}-\text{cos}\left(x\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x=\frac{\text{cos}\left(x\right)}{e^{x}}=e^{-x}\text{cos}\left(x\right)=g\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vamos a tratar de ver en donde converge el metodo de punto fijo y cual es
+ el orden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g'\left(x\right)=-e^{-x}\text{cos}x-e^{-x}\text{sen}x=-e^{-x}\left(\text{cos}\left(x\right)+\text{sen}\left(x\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Debo analizar 
+\begin_inset Formula $\left|g\left(x\right)\right|<1$
+\end_inset
+
+, propongo 
+\begin_inset Formula $I=\left[0,\frac{\pi}{2}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|e^{-x}\left(\text{cos}\left(x\right)+\text{sen}\left(x\right)\right)\right|<1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ya que todo es positivo en I la pregunta de fondo es:
+\end_layout
+
+\begin_layout Standard
+¿Cuando 
+\begin_inset Formula $e^{-x}\left(\text{cos}\left(x\right)+\text{sen}\left(x\right)\right)<1$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $e^{-x}$
+\end_inset
+
+es decreciente, 
+\begin_inset Formula $\rightarrow e^{-x}<1\forall x\epsilon\left[0,\frac{\pi}{2}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g''\left(x\right)=-e^{-x}\left(\text{cos}\left(x\right)+\text{sen}\left(x\right)\right)+e^{-x}\left(\text{cos}\left(x\right)-\text{sen}\left(x\right)\right)=-2e^{-x}\text{sen}\left(x\right)<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+h es decreciente
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g'\left(0\right)=e^{-0}\left(\text{cos}\left(0\right)+\text{sen}\left(0\right)\right)=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Propongo 
+\begin_inset Formula $I=\left(0,\frac{\pi}{2}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+Vale que es <1 en todos lados menos en 0
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rightarrow\left|g'\left(x\right)\right|<1\text{ en }I=\left(0,\frac{\pi}{2}\right]\quad y\quad g'\left(x\right)\neq0\forall x\epsilon\left[0,\frac{\pi}{2}\right]$
+\end_inset
+
+ en particular 
+\begin_inset Formula $g'\left(r\right)=0$
+\end_inset
+
+ tiene orden lineal.
+\end_layout
+
+\begin_layout Section
+18/10
+\end_layout
+
+\begin_layout Standard
+Notas importantes de la clase pasada.
+ Queremos ver que la derivada de la funcion es menor que 1, para eso se
+ ve que onda las segundas derivadas para ver si son crecientes o decrecientes
+ y entonces saber si la funcion es menor que 1 para algun punto lo es para
+ el resto o saber cuantas raices tiene.
+\end_layout
+
+\begin_layout Subsection
+N-R: Orden de convergencia
+\end_layout
+
+\begin_layout Standard
+Definición: Sea 
+\begin_inset Formula $X_{0},X_{1},....$
+\end_inset
+
+ que converge a r decimos que converge con orden p > 0 si
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\underset{n\rightarrow\infty}{\lim}\frac{\left|e_{n+1}\right|}{\left|e_{n}\right|^{p}}=C$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ejemplo: 
+\begin_inset Formula $f\left(x\right)=\left|x\right|^{\alpha}$
+\end_inset
+
+ con 
+\begin_inset Formula $\alpha>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=\left(1-\frac{1}{\alpha}\right)x_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}-0=\left(1-\frac{1}{\alpha}\right)\left(x_{n}-0\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|e_{n+1}\right|=\left(1-\frac{1}{\alpha}\right)\left|e_{n}\right|\rightarrow\frac{\left|e_{n+1}\right|}{\left|e_{n}\right|}=\left|1-\frac{1}{\alpha}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\underset{n\rightarrow\infty}{\lim}\frac{\left|e_{n+1}\right|}{\left|e_{n}\right|}=\left|1-\frac{1}{\alpha}\right|\neq0$
+\end_inset
+
+ si 
+\begin_inset Formula $\alpha\neq1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ejercicio: Dada la funcion 
+\begin_inset Formula $f\left(x\right)=e^{-3x}-\frac{x}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A) Demuestra que f tiene una unica raiz.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left(0\right)=e^{-3*0}-\frac{0}{2}=1>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left(1\right)=e^{-3}-\frac{1}{2}=\frac{1}{e^{3}}-\frac{1}{2}<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\exists$
+\end_inset
+
+ por Bolzano por lo menos una raiz entra 
+\begin_inset Formula $\left(0,1\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Falta ver que es unica.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f'\left(x\right)=e^{-3x}\left(-3\right)-\frac{1}{2}=-\left(e^{-3x}-\frac{1}{2}\right)<0\forall x\epsilon\mathbb{R}$
+\end_inset
+
+, osea que f es decreciente entonces la raiz es unica, porque pasa solo
+ una vez por el 0.
+\end_layout
+
+\begin_layout Standard
+b) Demuestr que cualquiera sea el 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ inicial la sucesion generada por N-R 
+\begin_inset Formula $x_{1},...,x_{n}$
+\end_inset
+
+ es monotona creciente acotada superiormente por la raiz y concluya la convergen
+cia ¿Con que orden converge?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n+1}=x_{n}-\frac{f\left(x_{n}\right)}{f'\left(x_{n}\right)}\qquad e_{n+1}=\frac{1}{2}\frac{f''\left(\xi\right)}{f'\left(x_{n}\right)}e_{n}^{2}$
+\end_inset
+
+ con 
+\begin_inset Formula $x_{n}>\xi>r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f''\left(x\right)=9e^{-3x}>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{1}-\xi=e_{1}=\frac{1}{2}\frac{f''\left(\xi\right)}{f'\left(x_{0}\right)}e_{0}^{2}=\frac{1}{2}\frac{f''\left(\xi\right)>0}{f'\left(x_{0}\right)<0}\left(e_{0}^{2}>0\right)<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{1}\leq r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+qvq 
+\begin_inset Formula $x_{1}\leq x_{2}\leq r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{2}=x_{1}-\frac{f\left(x_{1}\right)}{f'\left(x_{1}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f'\left(x_{1}\right)<0$
+\end_inset
+
+ entonces 
+\begin_inset Formula $f$
+\end_inset
+
+ es decreciente 
+\begin_inset Formula $\rightarrow f\left(x_{1}\right)\geq f\left(r\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{2}=x_{1}-\left(\frac{f\left(x_{1}\right)\geq0}{f'\left(x_{1}\right)<0}<0\right)\rightarrow x_{2}-x_{1}\geq0\rightarrow x_{2}>x_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+qvq 
+\begin_inset Formula $x_{2}\leq r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En general vale que 
+\begin_inset Formula $x_{n}\leq x_{n+1}\leq r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Probarlo por inducción 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rightarrow\left(x_{n}\right)$
+\end_inset
+
+ converge.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Orden cuadratico, la raiz es simple.
 \end_layout
 
 \end_body

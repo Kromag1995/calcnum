@@ -497,5 +497,100 @@ Entonces basta pedir que
 D)
 \end_layout
 
+\begin_layout Subsection
+Ejercicio 7
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left\{ \begin{matrix}y'\left(t\right)=\frac{e^{-y}}{t}\\
+y\left(1\right)=0
+\end{matrix}\right.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Propong 
+\begin_inset Formula $y\left(t+h\right)=y\left(t\right)+hy'\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y_{i+1}=y_{i}+hy_{i}'$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y_{1}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y\left(t+h\right)=y\left(t\right)+hy'\left(t\right)=y+h\frac{e^{-y}}{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{e^{-y}}{t}$
+\end_inset
+
+ para 
+\begin_inset Formula $y\leq1,t\geq1\rightarrow\frac{e^{-y}}{t}<1\rightarrow e^{-y}<t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y_{1}=0<1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y_{2}=h<2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y_{3}=h\left(1+\frac{e^{-h}}{2}\right)<3$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y_{4}=h\left(1+\frac{e^{-h}}{2}\right)+h\frac{e^{-h\left(1+\frac{e^{-h}}{2}\right)}}{3}=h\left(1+\frac{e^{-h}}{2}+\frac{e^{-h\left(1+\frac{e^{-h}}{2}\right)}}{3}\right)=h\left(1+\frac{3e^{-h}+2e^{-h\left(1+\frac{e^{-h}}{2}\right)}}{6}\right)$
+\end_inset
+
+7
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y_{4}=h\left(1+\frac{e^{-h}\left(3+2e^{-\frac{he^{-h}}{2}}\right)}{6}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y_{i+1}=y_{i}+hy_{i}'\leq y_{i}+h\;y_{i}\leq i\rightarrow y_{i+1}\leq i+h$
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document

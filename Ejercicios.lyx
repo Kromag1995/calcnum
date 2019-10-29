@@ -80,6 +80,10 @@ Resolucion de problemas.
 \end_layout
 
 \begin_layout Section
+Guia 1
+\end_layout
+
+\begin_layout Section
 Guia 2
 \end_layout
 
@@ -575,7 +579,7 @@ Propong
 \begin_inset Formula $y_{4}=h\left(1+\frac{e^{-h}}{2}\right)+h\frac{e^{-h\left(1+\frac{e^{-h}}{2}\right)}}{3}=h\left(1+\frac{e^{-h}}{2}+\frac{e^{-h\left(1+\frac{e^{-h}}{2}\right)}}{3}\right)=h\left(1+\frac{3e^{-h}+2e^{-h\left(1+\frac{e^{-h}}{2}\right)}}{6}\right)$
 \end_inset
 
-7
+
 \end_layout
 
 \begin_layout Standard
@@ -586,7 +590,205 @@ Propong
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $y_{i+1}=y_{i}+hy_{i}'\leq y_{i}+h\;y_{i}\leq i\rightarrow y_{i+1}\leq i+h$
+Por induccion 
+\begin_inset Formula $y_{i}<t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y\left(t+h\right)=y\left(t\right)+hy'\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y\left(t+h\right)=y\left(t\right)+h\frac{e^{-y\left(t\right)}}{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+C)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y\left(t+h\right)=y\left(t\right)+h\Phi\left(t,y,h\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Phi\left(t,y,h\right)=\frac{e^{-y}}{t}-h\frac{e^{-y}}{t^{2}}-h\frac{e^{-y}}{t}y'=\frac{e^{-y}}{t}-h\frac{e^{-y}}{t^{2}}-h\frac{e^{-y}}{t}\left(\frac{e^{-y\left(t\right)}}{t}\right)=\frac{te^{-y}-he^{-y}-he^{-2y}}{t^{2}}=\frac{e^{-y}}{t^{2}}\left(t-h-he^{-y}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $e_{trunc}=-\frac{he^{-y}}{t^{2}}\left(1+e^{-y}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ejercicio 10
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left\{ \begin{matrix}x'=-\alpha x+\gamma xy\\
+y'=\beta y-\delta xy
+\end{matrix}\right.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+a) 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x\left(t+\Delta t\right)=x\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y\left(t+\Delta t\right)=y\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x\left(t+\Delta t\right)\simeq x\left(t\right)+x'\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x'\left(t\right)=0$
+\end_inset
+
+, igual para 
+\begin_inset Formula $y'\left(t\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left\{ \begin{matrix}x\left(\alpha+\gamma y\right)=0\\
+y\left(\beta+\delta x\right)=0
+\end{matrix}\right.=\left\{ \begin{matrix}\alpha+\gamma y=0\\
+\beta+\delta x=0
+\end{matrix}\right.=\left\{ \begin{matrix}y=-\frac{\alpha}{\gamma}\\
+x=-\frac{\beta}{\delta}
+\end{matrix}\right.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ejercicio 11
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y_{i+1}=y_{i}+hf\left(t_{i}+\frac{h}{2},y_{i}+\frac{h}{2}f\left(t_{i},y_{i}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Error de truncamiento:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Phi\left(t,x,h\right)=f\left(t_{i}+\frac{h}{2},y_{i}+\frac{h}{2}f\left(t_{i},y_{i}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left(t_{i}+\frac{h}{2},y_{i}+\frac{h}{2}f\left(t_{i},y_{i}\right)\right)=f\left(t_{i},y_{i}\right)+f_{t}\left(t_{i},y_{i}\right)\frac{h}{2}+f_{y}\left(t_{i},y_{i}\right)\frac{h}{2}f\left(t_{i},y_{i}\right)+O\left(h^{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f'\left(t_{i}+\frac{h}{2},y_{i}+\frac{h}{2}f\left(t_{i},y_{i}\right)\right)=\nabla f\left(t_{i},y_{i}\right)+f_{t}\left(t_{i},y_{i}\right)\frac{h}{2}+f_{y}\left(t_{i},y_{i}\right)\frac{h}{2}f\left(t_{i},y_{i}\right)+O\left(h^{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dificil
+\end_layout
+
+\begin_layout Subsection
+Ejercicio 15
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{cases}
+\overset{..}{\theta}=-Asen\left(\theta\left(t\right)\right) & \left[0,T\right]\\
+\overset{.}{\theta}\left(0\right)=v_{0}\\
+\theta\left(0\right)=\theta_{0}
+\end{cases}$
+\end_inset
+
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+
+\begin_inset Formula $\begin{matrix}\overset{.}{\theta}=\gamma\\
+\overset{..}{\theta}=\overset{.}{\gamma}
+\end{matrix}\begin{cases}
+\overset{.}{\gamma}=-Asen\left(\theta\left(t\right)\right) & \left[0,T\right]\\
+\gamma=\overset{.}{\theta} & \overset{.}{\gamma}\left(0\right)=v_{0}\\
+\theta\left(0\right)=\theta_{0}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\overline{F}\left(t,\theta,\gamma\right)=\begin{matrix}f\left(t,\theta\right)=-Asen\left(\theta\left(t\right)\right)\\
+f\left(t,\gamma\right)=\gamma
+\end{matrix}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ejercicio 16
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u'\left(x\right)=\frac{u\left(x+h\right)-u\left(x\right)}{h}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $u\left(x+h\right)=$
 \end_inset
 
 

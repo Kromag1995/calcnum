@@ -1825,10 +1825,6 @@ se tiene que:
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula $\left(\left|x_{1}\right|+...+\left|x_{n}\right|\right)^{2}\leq\left(x_{1}^{2}+...+x_{n}^{2}\right)n$
 \end_inset
 
@@ -6354,6 +6350,1001 @@ Probarlo por inducción
 \end_inset
 
  Orden cuadratico, la raiz es simple.
+\end_layout
+
+\begin_layout Section
+22/10
+\end_layout
+
+\begin_layout Subsection
+Interpolacion
+\end_layout
+
+\begin_layout Standard
+Problema: Dados pares 
+\begin_inset Formula $\left(x_{0},y_{0}\right),\left(x_{1},y_{1}\right),...,\left(x_{n},y_{n}\right)$
+\end_inset
+
+ con 
+\begin_inset Formula $x_{i}\neq x_{j}$
+\end_inset
+
+ si 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hallar 
+\begin_inset Formula $\rho\epsilon\rho_{n}$
+\end_inset
+
+ tal que 
+\begin_inset Formula $\rho\left(x_{i}\right)=y_{i}\forall i$
+\end_inset
+
+, siendo 
+\begin_inset Formula $\rho$
+\end_inset
+
+ un polinomio.
+\end_layout
+
+\begin_layout Subsubsection
+Metodo 1: Sistema de ecuaciones lineales.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rho=a_{0}-a_{1}x+a_{2}x^{2}+...+a_{n}x^{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rho$
+\end_inset
+
+ sirve 
+\begin_inset Formula $\iff a_{0}+a_{1}x_{i}+a_{2}x_{i}^{2}+...+a_{n}x_{i}^{n}=y_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La matriz del sistema es:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $V\left(x_{0},...,x_{n}\right)=\left(\begin{matrix}1 & x_{0} & x_{0}^{2} & \cdots & x_{0}^{m}\\
+1 & x_{1} & x_{1}^{2} & \cdots & x_{1}^{m}\\
+\vdots & \vdots & \vdots & \vdots & \vdots\\
+1 & x_{n} & x_{n}^{2} & \cdots & x_{n}^{m}
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Matriz de vandermonde.
+\end_layout
+
+\begin_layout Subsubsection
+Metodo 2: Base de Lagrange
+\end_layout
+
+\begin_layout Standard
+Si consigo 
+\begin_inset Formula $l_{0},l_{1},l_{2}...l_{n}$
+\end_inset
+
+ polinomio de 
+\begin_inset Formula $\rho_{n}$
+\end_inset
+
+ tales que: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left\{ \begin{matrix}\rho_{i}\left(x_{i}\right)=1 & i=j\\
+0 & i\neq j
+\end{matrix}\right.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Listo: 
+\begin_inset Formula $\rho=\stackrel[i=0]{n}{\Sigma}y_{i}l_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(x,y,z\right)=xe_{1}+ye_{2}+ze_{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $l_{i}\left(x\right)=\frac{\underset{j\neq i}{\Pi}\left(x-x_{j}\right)}{\underset{j\neq i}{\Pi}\left(x_{i}-x_{j}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Obs: Hay que hacer cuenatas para conseguir los coeficientes de 
+\begin_inset Formula $\rho$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Metodo 3: forma de Newton
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $m=0\qquad\left(x_{0},y_{0}\right)\rightarrow\rho=y_{o}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $m=1\qquad\left(x_{0},y_{0}\right),\left(x_{1},y_{1}\right)\rightarrow\rho=y_{0}+\frac{y_{1}-y_{0}}{x_{1}-x_{0}}\left(x-x_{0}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $m=2\qquad\rho=y_{0}+\frac{y_{1}-y_{0}}{x_{1}-x_{0}}\left(x-x_{0}\right)+Algo\left(x-x_{0}\right)\left(x-x_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Supongamos dada f tal que 
+\begin_inset Formula $f\left(x_{i}\right)=y_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Diferencias divididas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left[x_{0}\right]=f\left(x_{0}\right)$
+\end_inset
+
+ orden 0
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left[x_{0},x_{1}\right]=\frac{f\left(x_{1}\right)-f\left(x_{0}\right)}{x_{1}-x_{0}}$
+\end_inset
+
+ orden 1
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left[x_{0},x_{1},x_{2}\right]=\frac{f\left[x_{1},x_{2}\right]-f\left[x_{0},x_{1}\right]}{x_{2}-x_{0}}$
+\end_inset
+
+ orden 2
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left[x_{0},x_{1},x_{2},...,x_{k}\right]=\frac{f\left[x_{1}...x_{k}\right]-f\left[x_{0}...x_{k-1}\right]}{x_{k}-x_{0}}$
+\end_inset
+
+ orden k
+\end_layout
+
+\begin_layout Standard
+Forma de Newton para 
+\begin_inset Formula $\rho$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rho=f\left[x_{0}\right]+f\left[x_{0},x_{1}\right]\left(x-x_{0}\right)+....+f\left[x_{0},...,x_{n}\right]\left(x-x_{0}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $q_{0}=1$
+\end_inset
+
+,
+\begin_inset Formula $f_{1}=\left(x-x_{0}\right)....\;q_{k}=\left(x-x_{k-1}\right)q_{k-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ejemplo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\begin{matrix}i & 0 & 1 & 2 & 3\\
+x_{i} & -1 & 1 & 2 & 4\\
+y_{i} & 1 & 4 & 1 & 4
+\end{matrix}\right|$
+\end_inset
+
+ 
+\begin_inset Formula $\left|\begin{matrix}x_{0} & f\left(x_{0}\right)\\
+x_{1} & f\left(x_{1}\right) & f\left[x_{0},x_{1}\right]\\
+x_{2} & f\left(x_{2}\right) & f\left[x_{1},x_{2}\right] & f\left[x_{0},x_{1},x_{2}\right]\\
+x_{3} & f\left(x_{3}\right) & f\left[x_{2},x_{3}\right] & f\left[x_{1},x_{2},x_{3}\right] & f\left[x_{0},x_{1},x_{2},x_{3}\right]
+\end{matrix}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\begin{matrix} & 0 & 1 & 2 & 3\\
+-1 & 1\\
+1 & 4 & \frac{3}{2}\\
+2 & 1 & -3 & \frac{3}{2}\\
+3 & 4 & \frac{3}{2} & \frac{3}{2} & \frac{3}{5}
+\end{matrix}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rho=1+\frac{3}{2}\left(x+1\right)-\frac{3}{2}\left(x+1\right)\left(x-1\right)+\frac{3}{5}\left(x+1\right)\left(x-1\right)\left(x-2\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rho=1+\frac{3}{2}\left(x+1\right)-\frac{3}{2}\left(x^{2}-1\right)+\frac{3}{5}\left(x^{3}-2x^{2}-x+2\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Falta hacer la convinacion lineal.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Objetivo:
+\series default
+ Implementar funcion que calcule 
+\begin_inset Formula $\rho$
+\end_inset
+
+ coeficiente a coeficiente:
+\end_layout
+
+\begin_layout Standard
+#Octave
+\end_layout
+
+\begin_layout Standard
+function P = interpolar
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+| validar_datos
+\end_layout
+
+\begin_layout Standard
+| calcular_tabla diferencias divididas
+\end_layout
+
+\begin_layout Standard
+| calcular_tabla coeficientes q_k
+\end_layout
+
+\begin_layout Standard
+| calcular_coeficientes P
+\end_layout
+
+\begin_layout Standard
+end
+\end_layout
+
+\begin_layout Standard
+####
+\end_layout
+
+\begin_layout Standard
+function P = interpolar
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+| n=length(X);
+\end_layout
+
+\begin_layout Standard
+| P = zeros(n,n);
+\end_layout
+
+\begin_layout Standard
+| q = zeros(n,n);
+\end_layout
+
+\begin_layout Standard
+| q
+\begin_inset Formula $\left(1,1\right)=1;$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+| for k=2:n
+\end_layout
+
+\begin_layout Standard
+| | q
+\begin_inset Formula $\left(k,1\right)=-x\left(k-1\right)*q\left(k-1,1\right);$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+| | for j=2:k
+\end_layout
+
+\begin_layout Standard
+| | | 
+\begin_inset Formula $q\left(k,j\right)=q\left(k-1,j-1\right)-x\left(k-1\right)q\left(k-1,j\right);$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+| | end
+\end_layout
+
+\begin_layout Standard
+| end
+\end_layout
+
+\begin_layout Standard
+| T = nan
+\begin_inset Formula $\left(n,n\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+| T(:,1) = Y;
+\end_layout
+
+\begin_layout Standard
+| for k=2:n
+\end_layout
+
+\begin_layout Standard
+| | for i=k:n
+\end_layout
+
+\begin_layout Standard
+| | | T(i,k)=
+\begin_inset Formula $\frac{\left(T\left(i,k-1\right)-T\left(i-1,k-1\right)\right)}{\left(x\left(i\right)-x\left(i+1-k\right)\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+| | end
+\end_layout
+
+\begin_layout Standard
+| end
+\end_layout
+
+\begin_layout Section
+25/10
+\end_layout
+
+\begin_layout Subsection
+Interpolación
+\end_layout
+
+\begin_layout Standard
+Vimos 3 mentodos:
+\end_layout
+
+\begin_layout Itemize
+Metodo de coeficiente indeterminado(Matriz de Vanderrmonde).
+\end_layout
+
+\begin_layout Itemize
+Forma de Newton: 
+\begin_inset Formula $P_{n}\left(x\right)=f\left[x_{0}\right]+...+f\left[x_{0},...,x_{n}\right]\left(x-x_{0}\right)....\left(x-x_{n}\right)$
+\end_inset
+
+(el polinomio puede tener menor grado que n)
+\end_layout
+
+\begin_layout Itemize
+Forma de Lagrange: 
+\begin_inset Formula $P_{n}\left(x\right)=\stackrel[k=0]{n}{\Sigma}f\left(x_{k}\right)l_{k}\left(x\right)$
+\end_inset
+
+ donde 
+\begin_inset Formula $l_{k}=\frac{\stackrel[j\neq k]{n}{\Pi}\left(x-x_{j}\right)}{\stackrel[j\neq k]{n}{\Pi}\left(x_{k}-x_{j}\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Esta ultimo tiene dos problemas:
+\end_layout
+
+\begin_layout Enumerate
+La cantidad de productos y divicsiones que hay que realizar.
+\end_layout
+
+\begin_layout Enumerate
+Si agrego un punto mas debemos recalcular todo.
+\end_layout
+
+\begin_layout Standard
+Ejemplo de forma de Newton:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{j}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Busco 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{2}\left(x\right)=\stackrel[k=0]{2}{\Sigma}f\left(x_{k}\right)l_{k}\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{2}\left(x\right)=f\left(x_{0}\right)l_{0}\left(x\right)+f\left(x_{1}\right)l_{1}\left(x\right)+f\left(x_{2}\right)l_{2}\left(x\right)=-5l_{0}\left(x\right)-3l_{1}\left(x\right)-1l_{2}\left(x\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $l_{0}\left(x\right)=\frac{\left(x-x_{1}\right)\left(x-x_{2}\right)}{\left(x_{0}-x_{1}\right)\left(x_{0}-x_{2}\right)}=\frac{x\left(x-1\right)}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $l_{1}\left(x\right)=\frac{\left(x-x_{1}\right)\left(x-x_{2}\right)}{\left(x_{1}-x_{0}\right)\left(x_{1}-x_{2}\right)}=-x^{2}+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $l_{0}\left(x\right)=\frac{\left(x-x_{1}\right)\left(x-x_{0}\right)}{\left(x_{2}-x_{0}\right)\left(x_{2}-x_{1}\right)}=\frac{\left(x+1\right)x}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{2}\left(x\right)=-5\frac{x\left(x-1\right)}{2}-3\left(-x^{2}+1\right)-1\frac{\left(x+1\right)x}{2}=-\frac{5}{2}x^{2}+3x^{2}-\frac{x^{2}}{2}+\frac{5}{2}x-\frac{x}{2}-3=$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{2}\left(x\right)=2x-3$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Que error cometemos al aproximar f por 
+\begin_inset Formula $P_{n}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Teorema: 
+\series default
+Sea 
+\begin_inset Formula $f\epsilon C^{n+1}\left(\left[a,b\right]\right).\left\{ x_{0},...,x_{n}\right\} \subset\left[a,b\right]$
+\end_inset
+
+ con 
+\begin_inset Formula $x_{i}\neq x_{j}$
+\end_inset
+
+ cuando 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $p\epsilon P_{n}$
+\end_inset
+
+el unico polinomio que interpola a f en esos puntos 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+
+\begin_inset Formula $\exists\xi_{x}\epsilon\left[a,b\right]$
+\end_inset
+
+ talque
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left(x\right)-p\left(x\right)=\frac{f^{n+1}\left(\xi_{x}\right)}{\left(n+1\right)!}\omega_{n+1}\left(x\right)$
+\end_inset
+
+ con 
+\begin_inset Formula $\omega_{n+1}\left(x\right)=\left(x-x_{0}\right)...\left(x-x_{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Cota del error de un polinomio:
+\end_layout
+
+\begin_layout Standard
+Bajo la hipotesis del teorema:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\underset{x\epsilon\left[a,b\right]}{\left|\left|g\right|\right|_{\infty}}=\underset{x\epsilon\left[a,b\right]}{sup}\left|g\left(x\right)\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f^{n+1}$
+\end_inset
+
+ continua 
+\begin_inset Formula $\underset{x\epsilon\left[a,b\right]}{\left|\left|f^{n+1}\right|\right|_{\infty}}=\underset{x\epsilon\left[a,b\right]}{max}\left|f^{n+1}\left(x\right)\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|f\left(x\right)-p\left(x\right)\right|=\frac{\left|f^{n+1}\left(\xi_{x}\right)\right|}{\left(n+1\right)!}\left|\omega_{n+1}\left(x\right)\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Como acotar 
+\begin_inset Formula $\left|\left|\omega\right|\right|_{\infty}$
+\end_inset
+
+ ?
+\end_layout
+
+\begin_layout Standard
+Para empezar trabajaos en 
+\begin_inset Formula $\left[-1,1\right]$
+\end_inset
+
+ y despues se puede transformar para 
+\begin_inset Formula $\left[a,b\right]$
+\end_inset
+
+ cualquiera.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{0}=-1$
+\end_inset
+
+ y 
+\begin_inset Formula $x_{n}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{j}=-1+hj$
+\end_inset
+
+ con 
+\begin_inset Formula $h=\frac{2}{n}$
+\end_inset
+
+ y 
+\begin_inset Formula $N=\frac{n}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{0}=-1=-Nh$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{1}=-1+h=-Nh+h=\left(-N+1\right)h$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{2}=-1+2h=-Nh+h=\left(-N+2\right)h$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n}=Nh$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x=rh$
+\end_inset
+
+ con 
+\begin_inset Formula $-N\leq r\leq N$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vamos a considerar: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{n-1}\leq x\leq x_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $h\left(N-1\right)\leq rh\leq Nh$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $N-1\leq r\leq N$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora vemos 
+\begin_inset Formula $x-x_{n-2}=rh-\left(N-2\right)h$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $h\leq rh-\left(N-2\right)h\leq2h$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Obs
+\series default
+: Estas cosas son utiles para el ejercicio 12 de la guia 6.
+\end_layout
+
+\begin_layout Standard
+Ahora vemos 
+\begin_inset Formula $x-x_{n-3}=rh-\left(N-3\right)h$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $2h\leq rh-\left(N-3\right)h\leq3h$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De igual manera puedo hacer esto para 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+, y queda:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x-x_{0}\leq2Nh=nh$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x-x_{0}\geq\left(2N-1\right)h=\left(n-1\right)h$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(n-1\right)h\leq x-x_{0}\leq nh$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego podemos intentar acotar 
+\begin_inset Formula $\omega$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\omega\left(x\right)\right|\leq nh\left(n-1\right)h...2h\left(x-x_{n-1}\right)\left(x-x_{n}\right)=n!h^{n+1}\left(x-x_{n-1}\right)\left(x-x_{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\omega\left(x\right)\right|\geq\left(n-1\right)!h^{n-1}\left(x-x_{n-1}\right)\left(x-x_{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+¿Que puedo decir sobre 
+\begin_inset Formula $\left|\left(x-x_{n-1}\right)\left(x-x_{n}\right)\right|$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left(x-x_{n-1}\right)\left(x-x_{n}\right)\right|$
+\end_inset
+
+ se puede pensar como una cuadratica factorizada.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{\nu}=\frac{x_{n+1}+x_{n}}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y_{\nu}=T\left(x_{\nu}\right)=\left(\frac{x_{n-1}+x_{n}}{2}-x_{n-1}\right)\left(\frac{x_{n-1}+x_{n}}{2}-x_{n}\right)$
+\end_inset
+
+=
+\begin_inset Formula $\frac{1}{4}\left(x_{n}-x_{n-1}\right)\left(x_{n-1}-x_{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left(x-x_{n-1}\right)\left(x-x_{n}\right)\right|\leq\left|\frac{1}{4}\left(x_{n}-x_{n-1}\right)\left(x_{n-1}-x_{n}\right)\right|=\frac{1}{4}\left|x_{n}-x_{n-1}\right|^{2}\leq\frac{h^{2}}{4}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\omega\left(x\right)\right|\leq n!h^{n-1}\left(x-x_{n-1}\right)\left(x-x_{n}\right)\leq n!h^{n-1}\frac{h^{2}}{4}=n!\frac{h^{n+1}}{4}=\frac{n!}{4}\left(\frac{2}{n}\right)^{n+1}=n!\frac{2^{n-1}}{n^{n+1}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+#Octave
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left(x\right)=\frac{1}{1+25x^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+| t = -1:0.001:1;
+\end_layout
+
+\begin_layout Standard
+| x = -1:0.2:1;
+\end_layout
+
+\begin_layout Standard
+| y = f(x)
+\end_layout
+
+\begin_layout Standard
+| z = polyval(polifit(x,y,lenght(x)-1),t)
+\end_layout
+
+\begin_layout Standard
+| plot(t,z)
 \end_layout
 
 \end_body

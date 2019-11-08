@@ -5,6 +5,10 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
+\begin_preamble
+\renewcommand\[{\begin{equation}} 
+\renewcommand\]{\end{equation}}
+\end_preamble
 \use_default_options false
 \begin_modules
 algorithm2e
@@ -1441,14 +1445,14 @@ Ejemplo
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $u\left(x+h\right)-2u\left(x\right)+u\left(x+h\right)=h^{2}u''\left(x\right)+O\left(h^{3}\right)$
+\begin_inset Formula $u\left(x+h\right)-2u\left(x\right)+u\left(x-h\right)=h^{2}u''\left(x\right)+O\left(h^{3}\right)$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $u''\left(x\right)=\frac{u\left(x+h\right)-2u\left(x\right)+u\left(x+h\right)}{h^{2}}+O\left(h\right)$
+\begin_inset Formula $u''\left(x\right)=\frac{u\left(x+2h\right)-2u\left(x\right)+u\left(x-h\right)}{h^{2}}+O\left(h\right)$
 \end_inset
 
 
@@ -7345,6 +7349,2143 @@ Luego podemos intentar acotar
 
 \begin_layout Standard
 | plot(t,z)
+\end_layout
+
+\begin_layout Section
+29/10
+\end_layout
+
+\begin_layout Subsection
+Polinomio de Tchebychev 
+\end_layout
+
+\begin_layout Standard
+Notacion:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f:A\mathbb{\rightarrow R}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|f\right|\right|_{\infty}=\underset{x\epsilon A}{sup}\left|f\left(x\right)\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $f:\mathbb{R\rightarrow R}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|f\right|\right|_{\infty}=\underset{x\epsilon\mathbb{R}}{sup}\left|f\left(x\right)\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|f_{\left[a,b\right]}\right|\right|_{\infty}=\underset{x\epsilon\left[a,b\right]}{sup}\left|f\left(x\right)\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Recordar
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+Si P, polinomio de grado n con 
+\begin_inset Formula $x_{1},....,x_{n}$
+\end_inset
+
+ raices:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $P=a\left(x-x_{1}\right)\left(x-x_{2}\right)...\left(x-x_{n}\right)$
+\end_inset
+
+ con a coeficiente principal de P.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Problema: 
+\begin_inset Formula $f\epsilon C^{n+1}\left(\left[a,b\right]\right)$
+\end_inset
+
+ 
+\series default
+y P de grado n interpola a f en 
+\begin_inset Formula $x_{0},...,x_{n}$
+\end_inset
+
+ distinto en 
+\begin_inset Formula $\left[a,b\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rightarrow f\left(x\right)-P\left(x\right)=\frac{f^{n+1}\left(\theta\left(x\right)\right)}{\left(n+1\right)!}\left(x-x_{0}\right)...\left(x-x_{n}\right)\qquad\forall x\epsilon\left[a,b\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pregunta: ¿Como elegir los x para poder acotar 
+\begin_inset Formula $w_{n+1}\left(x\right)=\left(x-x_{0}\right)...\left(x-x_{n}\right)$
+\end_inset
+
+ de la mejor manera posible?
+\end_layout
+
+\begin_layout Standard
+Respuesta: Tomar los x como ceros del polinomio de Tchebychev de grado n.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Def:
+\series default
+ Para 
+\begin_inset Formula $k\epsilon\mathbb{N}_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $T_{k}\left(x\right)=cos\left(kcos^{-1}\left(x\right)\right)$
+\end_inset
+
+ define 
+\begin_inset Formula $T_{k}:\left[-1:1\right]\rightarrow\left[-1:1\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+vale que:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{cases}
+T_{0}=1 & k=0\\
+T_{1}=x & k=1\\
+T_{k+1}=2xT_{k}-T_{k-1} & \forall k\epsilon\mathbb{N}_{0}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Propiedades de los 
+\begin_inset Formula $T_{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $gr\left(T_{k}\right)=k\qquad\forall k\epsilon\mathbb{N}_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+El coeficiente principal de 
+\begin_inset Formula $T_{k}$
+\end_inset
+
+es 
+\begin_inset Formula $2^{k-1}$
+\end_inset
+
+ para 
+\begin_inset Formula $k\epsilon\mathbb{N}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $T_{k}$
+\end_inset
+
+tiene k ceros distintos en 
+\begin_inset Formula $\left(-1,1\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $x_{i}=cos\left(\left(\frac{2i+1}{2k}\right)\pi\right)$
+\end_inset
+
+ con 
+\begin_inset Formula $i=0,1,...,k-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Lo de arriba sale igualando la ecuacion
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\left|\left|T_{k}\right|\right|=1$
+\end_inset
+
+ y 
+\begin_inset Formula $\left|T_{k}\left(y_{i}\right)\right|=1$
+\end_inset
+
+ para 
+\begin_inset Formula $y_{i}=cos\left(\frac{i\pi}{k}\right)$
+\end_inset
+
+ con 
+\begin_inset Formula $-1=y_{0}<x_{0}<y_{1}...x_{k}<y_{k}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Teorema: 
+\series default
+Si P es un polinomio mónico de grado n+1 con n+1 raiz distintas en 
+\begin_inset Formula $\left[-1,1\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+entonces:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{1}{2^{n}}=\left|\left|\frac{1}{2^{n}}T_{n+1}\right|\right|_{L^{\infty}\left(\left[-1,1\right]\right)}\leq\left|\left|P\right|\right|_{L^{\infty}\left(\left[-1,1\right]\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|\frac{1}{2^{n+1}}\right|\right|_{L^{\infty}\left(\left[-1,1\right]\right)}<\left|\left|\left(x-\vec{x}_{0}\right)...\left(x-\vec{x}_{n}\right)\right|\right|_{L^{\infty}\left(\left[-1,1\right]\right)}$
+\end_inset
+
+ con 
+\begin_inset Formula $\vec{x}_{0},...,\vec{x}_{n}\epsilon\left[-1,1\right]$
+\end_inset
+
+ distintos entre sí.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo: 
+\series default
+Elegir 3 nodos de interpolacion 
+\begin_inset Formula $x_{0},x_{1},x_{2}$
+\end_inset
+
+ en 
+\begin_inset Formula $\left[-1,1\right]$
+\end_inset
+
+ de modo que en general, una funcion 
+\begin_inset Formula $f\epsilon C^{3}\left(\left[-1,1\right]\right)$
+\end_inset
+
+ se aproxime de la mejor manera posible.
+\end_layout
+
+\begin_layout Standard
+En general
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left(x\right)-P\left(x\right)=\frac{f^{\left(3\right)}\left(\theta\left(x\right)\right)}{3!}\left(x-x_{0}\right)\left(x-x_{3}\right)\left(x-x_{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{0}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{1}=x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{2}=2x^{2}-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{3}=4x^{3}-3x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si los x son los ceros de 
+\begin_inset Formula $T_{3}$
+\end_inset
+
+ esto se acota de forma optima en norma infinita.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{3}=4x\left(x^{2}-\frac{3}{4}\right)=4x\left(x-\sqrt{\frac{3}{4}}\right)\left(x+\sqrt{\frac{3}{4}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{0}=-\sqrt{\frac{3}{4}}\qquad x_{1}=0\qquad x_{2}=\sqrt{\frac{3}{4}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Todo esto pero para 
+\begin_inset Formula $\left[a,b\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Respuesta rapida: llevar todo al 
+\begin_inset Formula $\left[-1,1\right]$
+\end_inset
+
+con una funcion lineal.
+\end_layout
+
+\begin_layout Standard
+¿Como elegir 
+\begin_inset Formula $\left[a,b\right]$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+Construir funcion lineal que lleve de 
+\begin_inset Formula $\left[-1,1\right]$
+\end_inset
+
+ al 
+\begin_inset Formula $\left[a,b\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Elegir n+1 puntos como los ceros de 
+\begin_inset Formula $T_{n+1}$
+\end_inset
+
+ en 
+\begin_inset Formula $\left[-1,1\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+TOmar 
+\begin_inset Formula $x_{i}=\phi\left(\vec{x_{i}}\right)$
+\end_inset
+
+ para todo i.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Obs
+\series default
+: Tomando asi los x:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|\left(x-x_{0}\right)...\left(x-x_{n}\right)\right|\right|_{L^{\infty}\left(\left[a,b\right]\right)}\leq\frac{1}{2^{n}}\left(\frac{b-a}{2}\right)^{n+1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y si P de grado n interpola a f en los x
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|f-P\right|\right|_{L^{\infty}\left(\left[a,b\right]\right)}\leq\frac{\left|\left|f^{\left(n+1\right)}\right|\right|_{L^{\infty}\left(\left[a,b\right]\right)}}{\left(n+1\right)!}\frac{1}{2^{n}}\left(\frac{b-a}{2}\right)^{n+1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejemplo
+\series default
+: Igual que antes pero en 
+\begin_inset Formula $\left[2,6\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Resolviendo en 
+\begin_inset Formula $\left[-1,1\right]$
+\end_inset
+
+ el problema
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{0}=-\sqrt{\frac{3}{4}}\qquad x_{1}=0\qquad x_{2}=\sqrt{\frac{3}{4}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Calculo la funcion lineal.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\phi\left(x\right)=\left(x-\left(-1\right)\right)\frac{4}{2}+2=2\left(x+1\right)+2=2x+4$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\phi\left(x\right)=2x+4$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Veo las nuevas raices
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{0}=\phi\left(\vec{x_{0}}\right)=4-\sqrt{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{1}=\phi\left(\vec{x_{1}}\right)=4$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{2}=\phi\left(\vec{x_{2}}\right)=4+\sqrt{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tomando así los x
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|f-P\right|\right|_{L^{n}\left(\left[2,6\right]\right)}\leq\frac{\left|\left|f^{\left(3\right)}\right|\right|_{L^{n}\left(\left[2,6\right]\right)}}{3!}\frac{1}{2^{2}}\left(\frac{4}{2}\right)^{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Obs
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\left|\left|f^{\left(n+1\right)}\right|\right|_{\infty}}{\left(n+1\right)!}\frac{1}{2^{n}}\left(\frac{b-a}{2}\right)^{n+1}\underset{si\;\left|\left|f^{\left(n+1\right)}\right|\right|_{\infty}controlador}{\rightarrow}0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{\alpha^{n}}{n!}\rightarrow0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cosas de error de interpolacion segun distribucion de nodos.
+\end_layout
+
+\begin_layout Standard
+Tenemos 
+\begin_inset Formula $f\epsilon C^{n+1}\left(\left[a,b\right]\right)$
+\end_inset
+
+ y P polinomio de grado n que interpola a f en 
+\begin_inset Formula $x_{0},...,x_{n}$
+\end_inset
+
+ puntos distintos de 
+\begin_inset Formula $\left[a,b\right]$
+\end_inset
+
+ sabemos que para 
+\begin_inset Formula $x\epsilon\left[a,b\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left(x\right)-P\left(x\right)=\frac{f^{\left(n+1\right)}}{\left(n+1\right)!}\left(x-x_{0}\right)...\left(x-x_{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Nodos arbitrariamente distribuidos.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|f-P\right|\right|_{L^{\infty}\left(\left[a,b\right]\right)}\leq\frac{\left|\left|f^{\left(n+1\right)}\right|\right|_{L^{\infty}\left(\left[a,b\right]\right)}}{\left(n+1\right)!}\left(b-a\right)^{n+1}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Nodos uniformemente distribuidos.
+\end_layout
+
+\begin_layout Standard
+(Ejercicio 12)recomm
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|f-P\right|\right|_{L^{\infty}\left(\left[a,b\right]\right)}\leq\frac{\left|\left|f^{\left(n+1\right)}\right|\right|_{L^{n}\left(\left[a,b\right]\right)}}{\left(n+1\right)!}\frac{\left(b-a\right)^{n+1}}{2^{n+1}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Nodos distribuidos como los ceos de 
+\begin_inset Formula $T_{n+1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left|\left|f-P\right|\right|_{L^{\infty}\left(\left[a,b\right]\right)}\leq\frac{\left|\left|f^{\left(n+1\right)}\right|\right|_{L^{\infty}\left(\left[a,b\right]\right)}}{\left(n+1\right)!}\frac{1}{2^{n}}\frac{\left(b-a\right)^{n+1}}{2^{n+1}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Octave
+\end_layout
+
+\begin_layout Standard
+#Como programar Polinomios de Tchebychev en octave, que paja escribir
+\end_layout
+
+\begin_layout Section
+01/11
+\end_layout
+
+\begin_layout Subsection
+Interpolacion de Hermite
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $x_{1},...,x_{n}$
+\end_inset
+
+, utiliza valores de la derivada de f en los puntos dados: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{matrix}P\left(x_{j}\right)=f\left(x_{j}\right)\\
+P'\left(x_{j}\right)=f'\left(x_{j}\right)
+\end{matrix}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Ejercicio:
+\end_layout
+
+\begin_layout Standard
+Busco in polinomio interpolado 
+\begin_inset Formula $P_{3}\left(x\right)$
+\end_inset
+
+ tal que: 
+\begin_inset Formula $\begin{matrix}P\left(-1\right)=1=f\left(-1\right)\\
+P'\left(-1\right)=1=f'\left(-1\right)\\
+P\left(2\right)=1=f\left(2\right)\\
+P'\left(1\right)=2=f'\left(1\right)
+\end{matrix}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{3}\left(x\right)=a_{0}+a_{1}x+a_{2}x^{2}+a_{3}x^{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{3}\left(-1\right)=a_{0}-a_{1}+a_{2}-a_{3}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{3}\left(2\right)=a_{0}+2a_{1}+4a_{2}+8a_{3}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P'_{3}\left(-1\right)=a_{1}-2a_{1}+3a_{3}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{3}'\left(1\right)=a_{1}+2a_{2}+3a_{3}=2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{matrix}1 & 2 & 4 & 8\\
+1 & -1 & 1 & -1\\
+0 & 1 & 2 & 3\\
+0 & 1 & -2 & 3
+\end{matrix}\right)\left(\begin{matrix}a_{0}\\
+a_{1}\\
+a_{2}\\
+a_{3}
+\end{matrix}\right)=\left(\begin{matrix}1\\
+1\\
+2\\
+1
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{matrix}1 & 2 & 4 & 8 & | & 1\\
+1 & -1 & 1 & -1 & | & 1\\
+0 & 1 & 2 & 3 & | & 2\\
+0 & 1 & -2 & 3 & | & 1
+\end{matrix}\right)\overset{}{f_{2}-f_{1}\rightarrow f_{2}}\left(\begin{matrix}1 & 2 & 4 & 8 & | & 1\\
+0 & -3 & -3 & -9 & | & 0\\
+0 & 1 & 2 & 3 & | & 2\\
+0 & 1 & -2 & 3 & | & 1
+\end{matrix}\right)-\frac{f_{2}}{3}\rightarrow\left(\begin{matrix}1 & 2 & 4 & 8 & | & 1\\
+0 & 1 & 1 & 3 & | & 0\\
+0 & 1 & 2 & 3 & | & 2\\
+0 & 1 & -2 & 3 & | & 1
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{matrix}1 & 2 & 4 & 8 & | & 1\\
+0 & 1 & 1 & 3 & | & 0\\
+0 & 1 & 2 & 3 & | & 2\\
+0 & 1 & -2 & 3 & | & 1
+\end{matrix}\right)\begin{matrix}f_{3}-f_{2}\rightarrow f_{3}\\
+f_{4}-f_{2}\rightarrow f_{4}
+\end{matrix}\left(\begin{matrix}1 & 2 & 4 & 8 & | & 1\\
+0 & 1 & 1 & 3 & | & 0\\
+0 & 0 & 1 & 0 & | & 2\\
+0 & 0 & -3 & 0 & | & 1
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Queda inderterminado 
+\begin_inset Formula $\blacksmiley$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Hermite:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{0},...,x_{n}$
+\end_inset
+
+puntos 
+\begin_inset Formula $\neq$
+\end_inset
+
+ y buscamos 
+\begin_inset Formula $P\epsilon P_{2n+1}/$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{matrix}P\left(x_{j}\right)=f\left(x_{j}\right)\\
+P'\left(x_{j}\right)=f'\left(x_{j}\right)
+\end{matrix}\rightarrow\exists!P\epsilon P_{2n+1}$
+\end_inset
+
+ que sastiface lo que pedimos.
+\end_layout
+
+\begin_layout Subsubsection
+Ejercicio:
+\end_layout
+
+\begin_layout Standard
+Busco un polinomio:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{matrix}P\left(1\right)=0=f\left(1\right)\\
+P\left(2\right)=0.7=f\left(2\right)\\
+P'\left(1\right)=1=f'\left(1\right)\\
+P'\left(2\right)=0.5=f'\left(2\right)
+\end{matrix}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Puedo resolver de 3 formas diferentes:
+\end_layout
+
+\begin_layout Enumerate
+Coeficientes indeterminados
+\end_layout
+
+\begin_layout Enumerate
+Forma de Lagrange
+\end_layout
+
+\begin_layout Enumerate
+Dif divididas
+\end_layout
+
+\begin_layout Standard
+1) Coef Indet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{3}\left(x\right)=a_{0}+a_{1}x+a_{2}x^{2}+a_{3}x^{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{3}\left(x\right)=a_{1}+2a_{2}x+3a_{3}x^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{3}\left(1\right)=a_{0}+a_{1}+a_{2}+a_{3}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{3}\left(2\right)=a_{0}+2a_{1}+4a_{2}+8a_{3}=0.7$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P'_{3}\left(-1\right)=a_{1}+2a_{2}+3a_{3}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{3}'\left(2\right)=a_{1}+4a_{2}+12a_{3}=0.5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{matrix}1 & 1 & 1 & 1\\
+1 & 2 & 4 & 8\\
+0 & 1 & 2 & 3\\
+0 & 1 & 4 & 12
+\end{matrix}\right)\left(\begin{matrix}a_{0}\\
+a_{1}\\
+a_{2}\\
+a_{3}
+\end{matrix}\right)=\left(\begin{matrix}0\\
+0.7\\
+1\\
+0.5
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{matrix}1 & 1 & 1 & 1 & | & 0\\
+1 & -1 & 1 & -1 & | & 0.7\\
+0 & 1 & 2 & 3 & | & 1\\
+0 & 1 & -2 & 3 & | & 0.5
+\end{matrix}\right)f_{2}-f_{1}\rightarrow f_{2}\left(\begin{matrix}1 & 2 & 4 & 8 & | & 0\\
+0 & 1 &  & -9 & | & 0.7\\
+0 & 1 & 2 & 3 & | & 1\\
+0 & 1 & -2 & 3 & | & 0.5
+\end{matrix}\right)\begin{matrix}f_{3}-f_{2}\rightarrow f_{3}\\
+f_{4}-f_{2}\rightarrow f_{4}
+\end{matrix}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{matrix}1 & 1 & 1 & 1 & | & 0\\
+0 & 1 & 3 & 7 & | & 0.7\\
+0 & 0 & -1 & -4 & | & 0.3\\
+0 & 0 & 1 & 5 & | & 0.2
+\end{matrix}\right)f_{4}+f_{3}\rightarrow f_{4}\left(\begin{matrix}1 & 1 & 1 & 1 & | & 0\\
+0 & 1 & 3 & 7 & | & 0.7\\
+0 & 0 & -1 & -4 & | & 0.3\\
+0 & 0 & 0 & 1 & | & 1
+\end{matrix}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El determinante es diferente de 0 entonces es determinada con solucion unica.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{3}\left(x\right)=-\frac{3}{2}+\frac{21}{10}x+\frac{7}{10}x^{2}+\frac{1}{10}x^{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+2) Resolvemos usando la forma de Lagrange
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P\left(x_{j}\right)=y_{i}=f\left(x_{j}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P'\left(x_{j}\right)=y_{j}'=f'\left(x_{j}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P\left(x\right)=\stackrel[j=0]{n}{\Sigma}y_{j}Q_{j}\left(x\right)+\stackrel[j=0]{n}{\Sigma}y_{j}'R_{j}\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Grados 2n+1
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Q_{j}\left(x_{k}\right)=\delta_{jk}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Q'_{j}\left(x_{k}\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R_{j}\left(x_{k}\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R_{j}'\left(x_{k}\right)=\delta_{jk}\qquad0\leq k\leq n$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Se definen como
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Q_{j}\left(x\right)=\left(1-2\left(x-x_{j}\right)l_{j}'\left(x_{j}\right)\right)l_{j}^{2}\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R_{j}\left(x\right)=\left(x-x_{j}\right)l_{j}^{2}\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el ejercicio: 
+\begin_inset Formula $P_{3}\left(x\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+En este ejemplo n =1
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{3}\left(x\right)=0Q_{0}\left(x\right)+0.7Q_{1}\left(x\right)+1R_{0}\left(x\right)+0.5R_{1}\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $l_{0}\left(x\right)=\frac{\left(x-2\right)}{1-2}=\frac{x-2}{-1}=2-x$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $l_{1}\left(x\right)=\frac{x-1}{2-1}=x-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $l_{0}'\left(x\right)=-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $l_{1}'\left(x\right)=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Q_{0}\left(x\right)=\left(1-2\left(x-x_{0}\right)l_{0}'\left(x_{0}\right)\right)l_{0}^{2}\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Q_{0}\left(x\right)=\left(2x-1\right)\left(2-x\right)^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Q_{1}\left(x\right)=\left(1-2\left(x-x_{1}\right)l'_{1}\left(x\right)\right)l_{1}^{2}\left(x\right)=\left(-2x+5\right)\left(x-1\right)^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R_{0}\left(x\right)=\left(x-x_{0}\right)l_{0}^{2}\left(x\right)=\left(x-1\right)\left(2-x\right)^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R_{1}\left(x\right)=\left(x-x_{1}\right)l_{1}^{2}\left(x\right)=\left(x-2\right)\left(x-1\right)^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{3}\left(x\right)=0.7\left(-2x+5\right)\left(x-1\right)^{2}+\left(x-1\right)\left(2-x\right)^{2}+0.5\left(x-2\right)\left(x-1\right)^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{3}\left(x\right)=\left(x-1\right)\left[0.7\left(-2x+5\right)\left(x-1\right)+\left(2-x\right)^{2}+0.5\left(x-2\right)\left(x-1\right)\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $=0.7\left(-2x^{2}+7x-5\right)+4-4x+x^{2}+0.5\left(x^{2}-3x+2\right)=$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $=-1.4x^{2}+4.9x-3.5+4-4x+x^{2}+0.5x^{2}-\frac{3}{2}x+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $=-1.4x^{2}+x^{2}+0.5x^{2}+4.9x-\frac{3}{2}x-4x+1.5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $=0.1x^{2}-0.6x+1.5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(x-1\right)\left(0.1x^{2}-0.6x+1.5\right)=0.1x^{3}-0.6x^{2}+1.5x-0.1x^{2}+0.6x-1.5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $=0.1x^{3}-0.7x^{2}+2.1x-1.5=\frac{1}{10}x^{3}-\frac{7}{10}x^{2}+\frac{21}{10}x-\frac{3}{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+3)Diferencias finitas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rightarrow P\epsilon P_{3}$
+\end_inset
+
+es de la forma
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P\left(x\right)=f\left[x_{0}\right]+f\left[x_{0},x_{0}\right]\left(x-x_{0}\right)+f\left[x_{0},x_{0},x_{1}\right]\left(x-x_{0}\right)^{2}+f\left[x_{0},x_{0},x_{1},x_{1}\right]\left(x-x_{0}\right)^{2}\left(x-x_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se define:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left[x_{i},x_{i}\right]=f'\left(x_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left[x_{i},x_{i},x_{j}\right]=\frac{f\left[x_{i},x_{j}\right]-f\left[x_{i},x_{i}\right]}{x_{j}-x_{i}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $z_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left[z_{i}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left[z_{i-1},z_{i}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left[z_{i-2},z_{i-1},z_{i}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left[z_{i-3},z_{i-2},z_{i-1},z_{i}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{0}$
+\end_inset
+
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left(x_{0}\right)=f\left[x_{0}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1=f'\left(x_{0}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{0}$
+\end_inset
+
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left(x_{0}\right)=f\left[x_{0}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left[x_{0},x_{0}\right]=f'\left(x_{0}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{1}2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left(x_{1}\right)=f\left[x_{1}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left[x_{0},x_{1}\right]=\frac{f\left[x_{1}\right]-f\left[x_{0}\right]}{x_{1}-x_{0}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left[x_{0},x_{0},x_{1}\right]=\frac{f\left[x_{0},x_{1}\right]-f\left[x_{0},x_{0}\right]}{x_{1}-x_{0}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{1}2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left(x_{1}\right)=f\left[x_{1}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left[x_{1},x_{1}\right]=f'\left(x_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f$
+\end_inset
+
+
+\begin_inset Formula $\left[x_{0},x_{1},x_{1}\right]=\frac{f\left[x_{1},x_{1}\right]-f\left[x_{0},x_{1}\right]}{x_{1}-x_{0}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left[x_{0},x_{0},x_{1},x_{1}\right]=\frac{f\left[x_{0},x_{1},x_{1}\right]-f\left[x_{1},x_{0},x_{1}\right]}{x_{1}-x_{0}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $z_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left[z_{i}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left[z_{i-1},z_{i}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left[z_{i-2},z_{i-1},z_{i}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left[z_{i-3},z_{i-2},z_{i-1},z_{i}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P\left(x\right)=0+\left(x-1\right)-0.3\left(x-1\right)^{2}+0.1\left(x-1\right)^{2}\left(x-2\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $=x-1-0.3\left(x^{2}-2x+1\right)+0.1\left(x^{2}-2x+1\right)\left(x-2\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $=x-1-0.3x^{2}+0.6x-0.3+0.1\left(x^{3}-4x^{2}+5x-2\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $=x-1-0.3x^{2}+0.6x-0.3+0.1x^{3}-0.4x^{2}+0.5x-0.2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $=0.1x^{3}-0.7x^{2}+2.1x-1.5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+05/11
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+Error en Hermite:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Recordar
+\series default
+: error de interpolacion: 
+\begin_inset Formula $x_{0}<...<x_{n}$
+\end_inset
+
+, 
+\begin_inset Formula $f\epsilon C^{n+1}\left(\left[x_{0},x_{n}\right]\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $P\epsilon P_{n}$
+\end_inset
+
+ interpola a f en 
+\begin_inset Formula $x_{0},...,x_{n}$
+\end_inset
+
+ si 
+\begin_inset Formula $f\left(x\right)-P\left(x\right)=\frac{f^{\left(n+1\right)}\left(\theta\left(x\right)\right)}{\left(n+1\right)!}\left(x-x_{0}\right)...\left(x-x_{n}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para 
+\begin_inset Formula $x\epsilon\left[x_{0},x_{n}\right]$
+\end_inset
+
+ con 
+\begin_inset Formula $\theta\left(x\right)\epsilon\left[x_{0},x_{n}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Caso Hermite:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x_{0}<x_{1}<...<x_{n}$
+\end_inset
+
+, si 
+\begin_inset Formula $f\epsilon C^{1}\left(\left[x_{0},x_{n}\right]\right)$
+\end_inset
+
+ existe un unico 
+\begin_inset Formula $P\epsilon P_{2\left(2n+1\right)}$
+\end_inset
+
+ tal que:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P\left(x_{i}\right)=f\left(x_{i}\right),\,P'\left(x_{i}\right)=f'\left(x_{i}\right)$
+\end_inset
+
+ 
+\begin_inset Formula $0<i<n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $f\epsilon C^{2\left(n+1\right)}\left(\left[x_{0},x_{n}\right]\right)\rightarrow f\left(x\right)-p\left(x\right)=\frac{f^{\left(2\left(n+1\right)\right)}\left(\theta\left(x\right)\right)}{\left(2\left(n+1\right)\right)!}\left(x-x_{0}\right)^{2}...\left(x-x_{n}\right)^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+para 
+\begin_inset Formula $x\epsilon\left[x_{0},x_{n}\right]$
+\end_inset
+
+ y 
+\begin_inset Formula $\theta\left(x\right)\epsilon\left[x_{0},x_{n}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Hermite Caso General:
+\end_layout
+
+\begin_layout Standard
+Sea f con una cantidad suficiente de derivadas en 
+\begin_inset Formula $\left[x_{0},x_{n}\right]$
+\end_inset
+
+con 
+\begin_inset Formula $x_{0}<...<x_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $m_{0},m_{1},...,m_{n}\epsilon\mathbb{N}$
+\end_inset
+
+ y 
+\begin_inset Formula $N+1=m_{0}+...+m_{n}$
+\end_inset
+
+, existe unico 
+\begin_inset Formula $P\epsilon P_{n}$
+\end_inset
+
+ tal que
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P\left(x_{0}\right)=f\left(x_{0}\right),\,\,P'\left(x_{o}\right)=f'\left(x_{0}\right),...,P^{\left(m_{0}-1\right)}\left(x_{o}\right)=f^{\left(m_{0}-1\right)}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P\left(x_{1}\right)=f\left(x_{1}\right),\,\,P'\left(x_{1}\right)=f'\left(x_{1}\right),...,P^{\left(m_{1}-1\right)}\left(x_{1}\right)=f^{\left(m_{1}-1\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P\left(x_{n}\right)=f\left(x_{n}\right),\,\,P'\left(x_{n}\right)=f'\left(x_{n}\right),...,P^{\left(m_{n}-1\right)}\left(x_{n}\right)=f^{\left(m_{n}-1\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Además, si 
+\begin_inset Formula $f\epsilon C^{N+1}\left(\left[x_{0},x_{n}\right]\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f\left(x\right)-P\left(x\right)=\frac{f^{\left(N+1\right)}\left(\theta\left(x\right)\right)}{\left(N+1\right)!}\left(x-x_{0}\right)^{m_{0}}...\left(x-x_{n}\right)^{m_{n}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ejercicio
+\series default
+: Pensar cotas para error de interpolacion si se combina Hermite con Eleccion
+ de nodos de Tchebychev.
+ Caso mas facíl: 
+\begin_inset Formula $m_{0}=m_{1}=...=m_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Splines Cúbicas
+\end_layout
+
+\begin_layout Standard
+Problema: quiero interpolar f en muchos puntos 
+\begin_inset Formula $x_{1}<...<x_{n+1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Lo malo
+\series default
+: si n es muy grande P puede terner oscilacion espurias.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Posibles soluciones
+\series default
+:
+\end_layout
+
+\begin_layout Enumerate
+Mantener el grado bajo para P pero usar minimos cuadrados.NO INTERPOLA.
+\end_layout
+
+\begin_layout Enumerate
+Interpolar de a pedazos y pegar las interpolaciones 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+Splines
+\end_layout
+
+\begin_layout Standard
+Tomo 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ de grado a lo sumo 3 en el intervalo 
+\begin_inset Formula $\left[x_{i},x_{i+1}\right]$
+\end_inset
+
+.
+ Si los 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ se eligen bien la interpolacion queda 
+\begin_inset Formula $C^{2}en\left[x_{1},x_{n+1}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cada 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ es: 
+\begin_inset Formula $P_{i}\left(x\right)=a_{i}x^{3}+b_{i}x^{2}+c_{i}x+d_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Entonces has a lo sumo 4n incognitas.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ecuaciones
+\series default
+: 
+\begin_inset Formula $y_{i}=f\left(x_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{i}\left(x_{i}\right)=y_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $P_{i}\left(x_{i}+1\right)=y_{i+1}$
+\end_inset
+
+ 2n ecuaciones
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P'_{i+1}\left(x_{i+1}\right)=P'_{i+1}\left(x_{i+1}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P''_{i+1}\left(x_{i+1}\right)=P''_{i+1}\left(x_{i+1}\right)$
+\end_inset
+
+ 2(n-1) ecuaciones
+\end_layout
+
+\begin_layout Standard
+Quedan 
+\begin_inset Formula $4n-2$
+\end_inset
+
+ ecuacuiones, 2 grados de libertad.
+\end_layout
+
+\begin_layout Subsection
+Formas de obtener unicidad
+\end_layout
+
+\begin_layout Enumerate
+Dar derivadas en los bordes: 
+\begin_inset Formula $P_{1}'\left(x_{1}\right),P'_{n}\left(x_{n+1}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Dar derivadas segundas en los bordes.
+\end_layout
+
+\begin_layout Enumerate
+Periodica: 
+\begin_inset Formula $P_{1}'\left(x_{1}\right)=P_{n}'\left(x_{n+1}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $P_{1}''\left(x_{1}\right)=P_{n}''\left(x_{n+1}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \end_body
